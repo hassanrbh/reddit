@@ -74,6 +74,8 @@ group :development do
   # speeding the development process
   gem "spring-commands-rspec"
   gem "guard-rspec"
+  gem "devise"
+  gem "letter_opener"
 end
 
 group :test do 
