@@ -13,8 +13,8 @@
     @keyframes pulsate-slow {
         0% {
             box-shadow:
-            0 0 25px #4CFE9C,
-            0 0 50px #3CF9C7;
+            0 0 25px #D81310,
+            0 0 50px #D81310;
         }
     }
 }
