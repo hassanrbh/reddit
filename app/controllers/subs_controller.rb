@@ -9,23 +9,24 @@ class SubsController < ApplicationController
         end
     end
 
-    def new
-        @sub = Sub.new
-        render :new
-    end
-    
     def show
         @sub = Sub.find_by(:id => params[:id])
         render :show
     end
+
+    def new
+        @sub = Sub.new
+        render :new
+    end
+
     def create
         @sub = Sub.new(subs_params)
         @sub.moderator_id = current_user.id
 
         if @sub.save
-            UserMailer.with(user: current_user,sub: @sub).notify_sub.deliver_now
             flash[:notice] = "Sub Created Successfully 🎒"
             redirect_to sub_path(@sub.id)
+            UserMailer.notify_sub(current_user,@sub).deliver_now
         else
             # UserMailer.with(user: current_user,sub: @sub).notify_sub_error.deliver_now
             flash[:error] = "Failed to Create Sub 🔫"
