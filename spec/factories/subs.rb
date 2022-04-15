@@ -8,7 +8,7 @@
 #  moderator_id :integer          not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  image_date   :text
+#  avatar       :string
 #
 FactoryBot.define do
   factory :sub do

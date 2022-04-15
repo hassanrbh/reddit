@@ -3,9 +3,9 @@
     <div class="container"> <!-- All The Subs Container-->
         <% @subs.each do |sub| %>
             <div>
-                <% if sub.image %>
+                <% if sub.avatar %>
                     <p>
-                        <%= image_tag sub.image_url %>
+                        <%= image_tag(sub.avatar) %>
                     </p>
                 <% end %>
             </div> <!-- Each Image Sub -->

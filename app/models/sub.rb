@@ -8,12 +8,14 @@
 #  moderator_id :integer          not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  image_date   :text
+#  avatar       :string
 #
 class Sub < ApplicationRecord
     validates :title, presence: true
     validates :description, presence: true
     validates :moderator_id, presence: true
+
+    mount_uploader :avatar, AvatarUploader
 
     belongs_to :moderator,
         :class_name => 'User',
