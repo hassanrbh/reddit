@@ -1,5 +1,6 @@
 class SubsController < ApplicationController
     before_action :authenticate_user!
+    before_action :clarify_user!, only: [:edit, :update]
 
     def index
         if !params[:q].present?
@@ -22,10 +23,10 @@ class SubsController < ApplicationController
     def create
         @sub = Sub.new(subs_params)
         @sub.moderator_id = current_user.id
-
+        
         if @sub.save
             flash[:notice] = "Sub Created Successfully 🎒"
-            redirect_to sub_path(@sub.id)
+            redirect_to new_sub_url
             UserMailer.notify_sub(current_user,@sub).deliver_now
         else
             # UserMailer.with(user: current_user,sub: @sub).notify_sub_error.deliver_now
@@ -56,11 +57,7 @@ class SubsController < ApplicationController
     private
 
     def subs_params
-        params.require(:subs).permit(:title,
-            :description,
-            :moderator_id,
-            :image
-        )
+        params.require(:subs).permit(:title,:description,:moderator_id,:image)
     end
 
     def subs_params_update
@@ -71,6 +68,6 @@ class SubsController < ApplicationController
     end
     def clarify_user!
         return if current_user.subs.find_by(:id => params[:id])
-        render(:file => File.join(Rails.root,'public/404.html'),:status => 404, :layout => false)
+        render json: 'Forbidden' ,status: :forbidden
     end
 end

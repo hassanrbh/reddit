@@ -8,6 +8,7 @@
 #  moderator_id :integer          not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  image_date   :text
 #
 class Sub < ApplicationRecord
     validates :title, presence: true
@@ -19,5 +20,4 @@ class Sub < ApplicationRecord
         :primary_key => :id,
         :foreign_key => :moderator_id,
         :dependent => :destroy
-    has_one_attached :image, :dependent => :destroy
 end

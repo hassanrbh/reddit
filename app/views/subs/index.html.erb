@@ -3,9 +3,9 @@
     <div class="container"> <!-- All The Subs Container-->
         <% @subs.each do |sub| %>
             <div>
-                <% if sub.image.attached? %>
+                <% if sub.image %>
                     <p>
-                        <%= image_tag sub.image.varient(resize: "200*200") %>
+                        <%= image_tag sub.image_url %>
                     </p>
                 <% end %>
             </div> <!-- Each Image Sub -->
