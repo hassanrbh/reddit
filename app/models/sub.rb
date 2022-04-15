@@ -19,4 +19,5 @@ class Sub < ApplicationRecord
         :primary_key => :id,
         :foreign_key => :moderator_id,
         :dependent => :destroy
+    has_one_attached :image, :dependent => :destroy
 end

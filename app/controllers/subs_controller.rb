@@ -1,6 +1,5 @@
 class SubsController < ApplicationController
     before_action :authenticate_user!
-    before_action :clarify_user!, only: [:edit, :update]
 
     def index
         if !params[:q].present?
@@ -17,6 +16,7 @@ class SubsController < ApplicationController
     
     def show
         @sub = Sub.find_by(:id => params[:id])
+        render :show
     end
     def create
         @sub = Sub.new(subs_params)
@@ -57,7 +57,8 @@ class SubsController < ApplicationController
     def subs_params
         params.require(:subs).permit(:title,
             :description,
-            :moderator_id
+            :moderator_id,
+            :image
         )
     end
 

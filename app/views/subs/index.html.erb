@@ -1,0 +1,14 @@
+<section class="text-black font-medium text-lg m-3 ml-[186px]">
+    <h4>Trending Today</h4>
+    <div class="container"> <!-- All The Subs Container-->
+        <% @subs.each do |sub| %>
+            <div>
+                <% if sub.image.attached? %>
+                    <p>
+                        <%= image_tag sub.image.varient(resize: "200*200") %>
+                    </p>
+                <% end %>
+            </div> <!-- Each Image Sub -->
+        <% end %>
+    </div>
+</section>
