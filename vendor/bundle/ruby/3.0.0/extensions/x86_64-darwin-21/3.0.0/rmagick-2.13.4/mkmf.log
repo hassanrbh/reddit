@@ -1,0 +1,73 @@
+checking for Ruby version >= 1.8.5... -------------------- yes
+
+--------------------
+
+find_executable: checking for clang... -------------------- yes
+
+--------------------
+
+find_executable: checking for Magick-config... -------------------- no
+
+--------------------
+
+find_executable: checking for pkg-config... -------------------- yes
+
+--------------------
+
+checking for ImageMagick version >= 6.4.9... -------------------- yes
+
+--------------------
+
+have_header: checking for stdint.h... -------------------- yes
+
+"clang -fdeclspec -o conftest -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/x86_64-darwin21 -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/ruby/backward -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0 -I.  -Xpreprocessor -fopenmp -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/7.1.0-29_1/include/ImageMagick-7  -Xpreprocessor -fopenmp -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/7.1.0-29_1/include/ImageMagick-7 conftest.c  -L. -L/Users/mac/.rbenv/versions/3.0.2/lib  -L/usr/local/Cellar/imagemagick/7.1.0-29_1/lib -lMagickCore-7.Q16HDRI    -L/usr/local/Cellar/imagemagick/7.1.0-29_1/lib -lMagickCore-7.Q16HDRI  -lruby.3.0   "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+"clang -E -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/x86_64-darwin21 -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/ruby/backward -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0 -I.  -Xpreprocessor -fopenmp -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/7.1.0-29_1/include/ImageMagick-7  -Xpreprocessor -fopenmp -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/7.1.0-29_1/include/ImageMagick-7  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <stdint.h>
+/* end */
+
+--------------------
+
+have_header: checking for sys/types.h... -------------------- yes
+
+"clang -E -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/x86_64-darwin21 -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/ruby/backward -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0 -I.  -Xpreprocessor -fopenmp -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/7.1.0-29_1/include/ImageMagick-7  -Xpreprocessor -fopenmp -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/7.1.0-29_1/include/ImageMagick-7  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <sys/types.h>
+/* end */
+
+--------------------
+
+have_header: checking for wand/MagickWand.h... -------------------- no
+
+"clang -E -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/x86_64-darwin21 -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/ruby/backward -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0 -I.  -Xpreprocessor -fopenmp -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/7.1.0-29_1/include/ImageMagick-7  -Xpreprocessor -fopenmp -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/7.1.0-29_1/include/ImageMagick-7  conftest.c -o conftest.i"
+conftest.c:3:10: fatal error: 'wand/MagickWand.h' file not found
+#include <wand/MagickWand.h>
+         ^~~~~~~~~~~~~~~~~~~
+1 error generated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <wand/MagickWand.h>
+/* end */
+
+--------------------
+
+
+Can't install RMagick 2.13.4. Can't find MagickWand.h.

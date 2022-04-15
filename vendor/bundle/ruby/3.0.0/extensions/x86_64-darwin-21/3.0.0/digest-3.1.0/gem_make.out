@@ -1,0 +1,18 @@
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/digest-3.1.0/ext/digest/sha2
+/Users/mac/.rbenv/versions/3.0.2/bin/ruby -I /Users/mac/.rbenv/versions/3.0.2/lib/ruby/3.0.0 -r ./siteconf20220415-33431-qj58g3.rb extconf.rb
+checking for u_int8_t... yes
+checking for sys/cdefs.h... yes
+creating Makefile
+
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/digest-3.1.0/ext/digest/sha2
+make DESTDIR\= clean
+
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/digest-3.1.0/ext/digest/sha2
+make DESTDIR\=
+compiling sha2init.c
+compiling sha2.c
+linking shared-object digest/sha2.bundle
+
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/digest-3.1.0/ext/digest/sha2
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 sha2.bundle ./.gem.20220415-33431-3i96ar/digest

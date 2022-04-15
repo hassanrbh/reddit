@@ -1,0 +1,16 @@
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/strscan-3.0.1/ext/strscan
+/Users/mac/.rbenv/versions/3.0.2/bin/ruby -I /Users/mac/.rbenv/versions/3.0.2/lib/ruby/3.0.0 -r ./siteconf20220415-33431-8rxz1n.rb extconf.rb
+checking for onig_region_memsize() in ruby.h... yes
+creating Makefile
+
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/strscan-3.0.1/ext/strscan
+make DESTDIR\= clean
+
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/strscan-3.0.1/ext/strscan
+make DESTDIR\=
+compiling strscan.c
+linking shared-object strscan.bundle
+
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/strscan-3.0.1/ext/strscan
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 strscan.bundle ./.gem.20220415-33431-6r0vv4

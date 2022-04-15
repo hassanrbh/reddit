@@ -1,0 +1,20 @@
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/io-console-0.5.11/ext/io/console
+/Users/mac/.rbenv/versions/3.0.2/bin/ruby -I /Users/mac/.rbenv/versions/3.0.2/lib/ruby/3.0.0 -r ./siteconf20220415-33431-1lpdvn.rb extconf.rb
+checking for termios.h... yes
+checking for cfmakeraw() in termios.h... yes
+checking for sys/ioctl.h... yes
+checking for HAVE_RUBY_FIBER_SCHEDULER_H... no
+checking for rb_scheduler_timeout()... no
+creating Makefile
+
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/io-console-0.5.11/ext/io/console
+make DESTDIR\= clean
+
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/io-console-0.5.11/ext/io/console
+make DESTDIR\=
+compiling console.c
+linking shared-object io/console.bundle
+
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/io-console-0.5.11/ext/io/console
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 console.bundle ./.gem.20220415-33431-7kj82i/io

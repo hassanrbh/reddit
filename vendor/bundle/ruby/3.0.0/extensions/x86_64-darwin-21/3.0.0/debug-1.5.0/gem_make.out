@@ -1,0 +1,19 @@
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/debug-1.5.0/ext/debug
+/Users/mac/.rbenv/versions/3.0.2/bin/ruby -I /Users/mac/.rbenv/versions/3.0.2/lib/ruby/3.0.0 -r ./siteconf20220415-33431-jv8k1y.rb extconf.rb
+checking for rb_iseq_parameters(NULL, 0) in VALUE rb_iseq_parameters(void *, int is_proc);... yes
+checking for rb_iseq_code_location(NULL, NULL, NULL, NULL, NULL) in void rb_iseq_code_location(void *, int *first_lineno, int *first_column, int *last_lineno, int *last_column);... yes
+checking for rb_iseq_type(NULL) in VALUE rb_iseq_type(void *);... no
+creating Makefile
+
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/debug-1.5.0/ext/debug
+make DESTDIR\= clean
+
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/debug-1.5.0/ext/debug
+make DESTDIR\=
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.bundle
+
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/debug-1.5.0/ext/debug
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 debug.bundle ./.gem.20220415-33431-nmz1rh/debug

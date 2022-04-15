@@ -1,0 +1,91 @@
+have_func: checking for rb_iseq_parameters(NULL, 0) in VALUE rb_iseq_parameters(void *, int is_proc);... -------------------- yes
+
+"clang -fdeclspec -o conftest -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/x86_64-darwin21 -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/ruby/backward -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0 -I. -I/Users/mac/.rbenv/versions/3.0.2/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe conftest.c  -L. -L/Users/mac/.rbenv/versions/3.0.2/lib -L. -L/Users/mac/.rbenv/versions/3.0.2/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.3.0   "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+"clang -fdeclspec -o conftest -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/x86_64-darwin21 -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/ruby/backward -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0 -I. -I/Users/mac/.rbenv/versions/3.0.2/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe conftest.c  -L. -L/Users/mac/.rbenv/versions/3.0.2/lib -L. -L/Users/mac/.rbenv/versions/3.0.2/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.3.0   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: VALUE rb_iseq_parameters(void *, int is_proc);
+ 4: /*top*/
+ 5: extern int t(void);
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     int (* volatile tp)(void)=(int (*)(void))&t;
+10:     printf("%d", (*tp)());
+11:   }
+12: 
+13:   return !!argv[argc];
+14: }
+15: 
+16: int t(void) { rb_iseq_parameters(NULL, 0); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_iseq_code_location(NULL, NULL, NULL, NULL, NULL) in void rb_iseq_code_location(void *, int *first_lineno, int *first_column, int *last_lineno, int *last_column);... -------------------- yes
+
+"clang -fdeclspec -o conftest -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/x86_64-darwin21 -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/ruby/backward -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0 -I. -I/Users/mac/.rbenv/versions/3.0.2/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe conftest.c  -L. -L/Users/mac/.rbenv/versions/3.0.2/lib -L. -L/Users/mac/.rbenv/versions/3.0.2/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.3.0   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: void rb_iseq_code_location(void *, int *first_lineno, int *first_column, int *last_lineno, int *last_column);
+ 4: /*top*/
+ 5: extern int t(void);
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     int (* volatile tp)(void)=(int (*)(void))&t;
+10:     printf("%d", (*tp)());
+11:   }
+12: 
+13:   return !!argv[argc];
+14: }
+15: 
+16: int t(void) { rb_iseq_code_location(NULL, NULL, NULL, NULL, NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_iseq_type(NULL) in VALUE rb_iseq_type(void *);... -------------------- no
+
+"clang -fdeclspec -o conftest -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/x86_64-darwin21 -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0/ruby/backward -I/Users/mac/.rbenv/versions/3.0.2/include/ruby-3.0.0 -I. -I/Users/mac/.rbenv/versions/3.0.2/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe conftest.c  -L. -L/Users/mac/.rbenv/versions/3.0.2/lib -L. -L/Users/mac/.rbenv/versions/3.0.2/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.3.0   "
+Undefined symbols for architecture x86_64:
+  "_rb_iseq_type", referenced from:
+      _t in conftest-718957.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: VALUE rb_iseq_type(void *);
+ 4: /*top*/
+ 5: extern int t(void);
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     int (* volatile tp)(void)=(int (*)(void))&t;
+10:     printf("%d", (*tp)());
+11:   }
+12: 
+13:   return !!argv[argc];
+14: }
+15: 
+16: int t(void) { rb_iseq_type(NULL); return 0; }
+/* end */
+
+--------------------
+

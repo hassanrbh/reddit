@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>Welcome <%= @user.email %>, you just create a new Sub <span class="text-yellow-200">(<%= @sub.title %>)</span></h1>
+    <p class="font-serif">
+        You Have Successfully Create A Sub, That Good To Know Because Now You can create as many posts that you
+        Want and share your life with us , pliz try to be funny and respectful. Thanks.
+
+        Regards, Reddit Team    
+    </p>
+    <p class="font-serif font-bold">
+        To Go directly to your sub just click to this link <a class="bg-red-300"href="<%= sub_url(@sub.id) %>"></a>
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+</body>
+</html>

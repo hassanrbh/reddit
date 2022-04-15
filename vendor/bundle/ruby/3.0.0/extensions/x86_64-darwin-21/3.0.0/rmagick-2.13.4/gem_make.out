@@ -1,0 +1,53 @@
+current directory: /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/gems/rmagick-2.13.4/ext/RMagick
+/Users/mac/.rbenv/versions/3.0.2/bin/ruby -I /Users/mac/.rbenv/versions/3.0.2/lib/ruby/3.0.0 -r ./siteconf20220415-33431-vzzsef.rb extconf.rb
+checking for Ruby version >= 1.8.5... yes
+checking for clang... yes
+checking for Magick-config... no
+checking for pkg-config... yes
+checking for ImageMagick version >= 6.4.9... yes
+checking for stdint.h... yes
+checking for sys/types.h... yes
+checking for wand/MagickWand.h... no
+
+Can't install RMagick 2.13.4. Can't find MagickWand.h.
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/Users/mac/.rbenv/versions/3.0.2/bin/$(RUBY_BASE_NAME)
+	--with-stdint-dir
+	--without-stdint-dir
+	--with-stdint-include
+	--without-stdint-include=${stdint-dir}/include
+	--with-stdint-lib
+	--without-stdint-lib=${stdint-dir}/lib
+	--with-sys-dir
+	--without-sys-dir
+	--with-sys-include
+	--without-sys-include=${sys-dir}/include
+	--with-sys-lib
+	--without-sys-lib=${sys-dir}/lib
+	--with-wand-dir
+	--without-wand-dir
+	--with-wand-include
+	--without-wand-include=${wand-dir}/include
+	--with-wand-lib
+	--without-wand-lib=${wand-dir}/lib
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /Users/mac/Desktop/projects/reddit/reddit/vendor/bundle/ruby/3.0.0/extensions/x86_64-darwin-21/3.0.0/rmagick-2.13.4/mkmf.log
+
+extconf failed, exit code 1
