@@ -21,4 +21,8 @@ class Sub < ApplicationRecord
         :primary_key => :id,
         :foreign_key => :moderator_id,
         :dependent => :destroy
+    has_many :posts,
+             :class_name => 'Post',
+             :foreign_key => :sub_id,
+             :dependent => :destroy
 end

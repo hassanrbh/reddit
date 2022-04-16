@@ -34,6 +34,7 @@ class User < ApplicationRecord
   before_validation :adding_username
          
   has_many :subs, :class_name => 'Sub', :primary_key => :id, :foreign_key => :moderator_id, :dependent => :destroy
+  has_many :posts, :class_name => 'Post', :primary_key => :id, :foreign_key => :author_id, :dependent => :destroy
 
   private
   def adding_username
