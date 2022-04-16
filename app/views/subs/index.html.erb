@@ -3,7 +3,7 @@
     <div class="container"> <!-- All The Subs Container-->
         <% @subs.each do |sub| %>
             <div>
-                <%= sub.title %>
+                <a href="<%= sub_path(sub.id)%>"><%= sub.title %></a>
             </div> <!-- Each Image Sub -->
         <% end %>
     </div>

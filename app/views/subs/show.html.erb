@@ -13,9 +13,11 @@
                         class=" font-light text-blue-400">
                             <a href="<%= user_path(moderator_sub.id) %>">
                                     <%= moderator_sub.username %></a></em>
-            <span class="ml-3 font-light text-blue-400 before:content-['🧨']">
-                <a href="<%= edit_sub_path(@sub.id) %>">Edit Sub</a>
-            </span>
+            <% if @sub.moderator.username == current_user.username %> 
+                <span class="ml-3 font-light text-blue-400 before:content-['🧨']">
+                    <a href="<%= edit_sub_path(@sub.id) %>">Edit Sub</a>
+                </span>
+            <% end %>
         </p>
     </div>
     <div class=""> <!-- The Subscription Button -->
