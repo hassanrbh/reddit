@@ -9,6 +9,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  avatar       :string
+#  image_date   :text
 #
 require 'rails_helper'
 

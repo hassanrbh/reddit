@@ -22,12 +22,21 @@
 #  locked_at              :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  username               :string
+#  first_name             :string           not null
+#  last_name              :string           not null
 #
 class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # Include default devise modules. Others available are:
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :lockable, :timeoutable, :trackable
+  before_validation :adding_username
          
   has_many :subs, :class_name => 'Sub', :primary_key => :id, :foreign_key => :moderator_id, :dependent => :destroy
+
+  private
+  def adding_username
+    self.username = "#{self.first_name}".concat(self.last_name)
+  end
 end
