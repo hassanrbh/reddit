@@ -1,0 +1,28 @@
+<% moderator_sub = @sub.moderator %>
+
+<div class="bg-white h-[143px] flex justify-between"> <!-- Profile Subs -->
+    <div class="p-7">  <!-- The Subs Information -->
+        <h1 class="uppercase font-bold text-xl">
+            subs/<%= @sub.title %>
+        </h1>
+        <p class="lowercase pt-2 text-gray-700">
+            <%= @sub.description %>
+        </p>
+        <p class="pt-2 text-gray-700">
+            Moderator by <em 
+                        class=" font-light text-blue-400">
+                            <a href="<%= user_path(moderator_sub.id) %>">
+                                    <%= moderator_sub.username %></a></em>
+            <span class="ml-3 font-light text-blue-400 before:content-['🧨']">
+                <a href="<%= edit_sub_path(@sub.id) %>">Edit Sub</a>
+            </span>
+        </p>
+    </div>
+    <div class=""> <!-- The Subscription Button -->
+        <a href="<%= login_url %>"
+                class="inline-block text-white font-bold border-[3px] border-orange-500
+                    rounded-lg text-lg pr-[20px] pl-[20px] m-[24px]
+                    pt-[6px] pb-[6px] hover:animate-pulsate bg-orange-500"
+                  >Subscribe</a> <!-- Don't forget to add the subscription route-->
+    </div>
+</div>

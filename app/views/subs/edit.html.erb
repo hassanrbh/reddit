@@ -1,0 +1,45 @@
+
+<body class="font-mono bg-gray-400">
+		<!-- Container -->
+		<div class="container mx-auto">
+			<div class="flex justify-center px-6 mt-4">
+				<!-- Row -->
+				<div class="w-full xl:w-3/4 lg:w-11/12 flex h-[750px]">
+					<!-- Col -->
+					<div
+						class="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
+						style="background-image: url('https://external-preview.redd.it/xm7e2Q-SV7zMt8T0TH1i_1mpoAHeGAGIBOh59nwYs3o.jpg?auto=webp&s=0421a95d23c865d1a6da2e268bc24e8d01096500')"
+					></div>
+					<!-- Col -->
+					<div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
+ 						<h3 class="pt-4 text-2xl text-center">New Sub!</h3>
+						<form class="px-8 pt-6 pb-8 mb-4 bg-white rounded" action="<%= sub_path(@sub.id) %>" method="POST">
+                            <input type="hidden"
+                                    name="_method"
+                                        value="PATCH">
+                            <p class="text-green-600 font-bold text-lg inline"><%= notice %></p>
+                            <input type="hidden"
+                                    name="authenticity_token"
+                                        value="<%= form_authenticity_token %>">
+
+                            <label for="sub_title" class="block mb-2 text-sm font-bold text-gray-700">Title</label>
+                            <input type="text"
+                                    name="subs[title]"
+                                        class="border-2 border-gray-200 rounded mb-10"
+                                            id="sub_title"
+                                                required="required"
+                                                    value="<%= @sub.title %>">
+
+                            <label for="sub_description" class="block mb-2 text-sm font-bold text-gray-700">Description</label>
+                            <textarea class="border-2 border-gray-200 w-[430px] h-[400px] font-bold text-xl mb-5" required="required" name="subs[description]" id="sub_description"><%= @sub.description %></textarea>
+                            <br />
+
+                            <input type="submit" value="SAVE" class="inline-block text-gray-500 font-bold border-[3px] border-[#3c67e3]
+                                        rounded-lg text-lg pr-[20px] pl-[20px] m-[13px]
+                                        pt-[6px] pb-[6px] hover:animate-pulsate cursor-pointer">
+                        </form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
