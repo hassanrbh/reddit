@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/bfe7d96b18.js" crossorigin="anonymous"></script>
   </head>
 
-  <body class="bg-[#dae0e6] m-auto font-sans">
+  <body class="bg-[#dae0e6] font-sans">
     <header class="bg-white">
       <nav class="h-[68px] flex justify-between"> <!-- Navigation menu -->
         <div class="inline-flex p-2 ml-5">  <!-- logo and The Search Bar for Subs and sub-posts -->
@@ -54,7 +54,7 @@
                 />
           <i class="fa-solid fa-magnifying-glass fa-xl pl-10 m-[-80px]"></i>
         </div>
-        <div class="pl-80 flex flex-shrink-1 justify-end">  <!-- login and sign up buttons and an advertising icon -->
+        <div class="pl-80 flex justify-end">  <!-- login and sign up buttons and an advertising icon -->
           <a href="#"><i class="fa-solid fa-2xl fa-rectangle-ad m-[34px] ml-[20px] mr-[20px] text-[skyblue] hover:animate-ping hover:text-rose-300"></i></a>
           <% if !user_signed_in? %>
             <a href="<%= login_url %>"

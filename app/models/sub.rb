@@ -19,10 +19,9 @@ class Sub < ApplicationRecord
     belongs_to :moderator,
         :class_name => 'User',
         :primary_key => :id,
-        :foreign_key => :moderator_id,
-        :dependent => :destroy
-    has_many :posts,
-             :class_name => 'Post',
-             :foreign_key => :sub_id,
-             :dependent => :destroy
+        :foreign_key => :moderator_id
+
+    has_many :post_subs,
+              :class_name => 'PostSub', :foreign_key => :sub_id,:inverse_of => :sub
+    has_many :posts, :through => :post_subs
 end

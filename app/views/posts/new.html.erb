@@ -27,7 +27,15 @@
                                   id="post_url">
 
                   <label for="post_content" class="block mb-2 text-sm font-bold text-gray-700">Content</label>
-                  <textarea class="border-2 border-gray-200 w-[430px] h-[200px] font-bold text-xl mb-5"name="post[content]" id="post_content"></textarea>
+                  <textarea class="border-2 border-gray-200 w-[430px] h-[200px] font-bold text-xl mb-5"name="posts[content]" id="post_content"></textarea>
+                  <br />
+                  <% Sub.all.each do |sub| %>
+                    <label class="block">
+                        <input type="checkbox" name="posts[sub_ids][]" value="<%= sub.id%>"/>
+                        <%= sub.title %>
+                    </label>
+                  <% end %>
+
                   <br />
                   <input type="submit"
                             value="SAVE"

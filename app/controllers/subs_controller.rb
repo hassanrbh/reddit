@@ -23,10 +23,10 @@ class SubsController < ApplicationController
     def create
         @sub = Sub.new(subs_params)
         @sub.moderator_id = current_user.id
-        
+
         if @sub.save
             flash[:notice] = "Sub Created Successfully 🎒"
-            redirect_to new_sub_url
+            redirect_to sub_url(@sub.id)
             UserMailer.notify_sub(current_user,@sub).deliver_now
         else
             # UserMailer.with(user: current_user,sub: @sub).notify_sub_error.deliver_now

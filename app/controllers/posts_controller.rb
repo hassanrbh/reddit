@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.post.new(posts_params)
+    @post = current_user.posts.new(posts_params)
 
     if @post.save
       flash[:notice] = "Post Created Successfully ☄️"
@@ -41,7 +41,7 @@ class PostsController < ApplicationController
   private
 
   def posts_params
-    params.require(:posts).permit(:title,:url, :content,:sub_id)
+    params.require(:posts).permit(:title,:url, :content,sub_ids: [])
   end
 
   def posts_params_edit
