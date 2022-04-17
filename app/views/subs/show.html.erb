@@ -9,11 +9,11 @@
             <%= @sub.description %>
         </p>
         <p class="pt-2 text-gray-700">
-            Moderator by <em 
+            Moderator by <em
                         class=" font-light text-blue-400">
                             <a href="<%= user_path(moderator_sub.id) %>">
                                     <%= moderator_sub.username %></a></em>
-            <% if @sub.moderator.username == current_user.username %> 
+            <% if @sub.moderator.username == current_user.username %>
                 <span class="ml-3 font-light text-blue-400 before:content-['🧨']">
                     <a href="<%= edit_sub_path(@sub.id) %>">Edit Sub</a>
                 </span>
@@ -28,3 +28,12 @@
                   >Subscribe</a> <!-- Don't forget to add the subscription route-->
     </div>
 </div>
+<section class="m-[35px]">
+  <a href="<%= new_post_path %>"
+        class="inline-block text-white font-bold border-[2px] border-[#3293db]
+              rounded text-lg pt-[6px] pb-[6px] hover:animate-pulsate
+              bg-[#3293db] uppercase tracking-[tight] w-[200px] text-center"
+            >Create Post</a>
+
+</section>
+<div class=""></div> <!-- Posts Container -->
