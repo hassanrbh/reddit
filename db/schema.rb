@@ -43,8 +43,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_17_130927) do
   end
 
   create_table "post_subs", force: :cascade do |t|
-    t.string "sub_id", null: false
-    t.string "post_id", null: false
+    t.integer "sub_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_post_subs_on_post_id"

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def show
     @post = Post.find_by(:id => params[:id])
+    @sub = Sub.find_by(:id => params[:sub_id])
     render :show
   end
 
@@ -29,19 +30,19 @@ class PostsController < ApplicationController
   def update
     @post = Post.find_by(:id => params[:id])
 
-    if @post.save
+    if @post.update(posts_params)
       flash[:notice] = "Update Successfully"
       redirect_to post_path(@post.id)
     else
       flash[:error] = "Failed to Update"
-      redieect_to post_path(@post.id)
+      redirect_to post_path(@post.id)
     end
   end
 
   private
 
   def posts_params
-    params.require(:posts).permit(:title,:url, :content,sub_ids: [])
+    params.require(:posts).permit(:title,:url, :content,:user_id,sub_ids: [])
   end
 
   def posts_params_edit

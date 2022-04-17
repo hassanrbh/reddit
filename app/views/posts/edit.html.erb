@@ -8,29 +8,40 @@
 					></div>
 					<div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
  						<h3 class="pt-4 text-2xl text-center">New Post 🤖🗡</h3>
-						<form class="px-8 pt-6 pb-8 mb-4 bg-white rounded" action="<%= posts_path %>" method="POST">
+						<form class="px-8 pt-6 pb-8 mb-4 bg-white rounded" action="<%= post_path(@post.id) %>" method="POST">
                   <p class="text-green-600 font-bold text-lg inline"><%= notice %></p>
                   <input type="hidden"
                           name="authenticity_token"
                               value="<%= form_authenticity_token %>">
+                  <input type="hidden"
+                            name="_method"
+                              value="PATCH">
                   <label for="post_title" class="block mb-2 text-sm font-bold text-gray-700">Title</label>
                   <input type="text"
                             name="posts[title]"
                                 class="border-2 border-gray-200 rounded mb-4"
                                     id="post_title"
-                                        required="required">
+                                        required="required"
+                                          value="<%= @post.title %>">
                   <label for="post_url" class="block mb-2 text-sm font-bold text-gray-700">URL</label>
                   <input type="text"
                             name="posts[url]"
                               class="border-2 border-gray-200 rounded mb-4"
-                                  id="post_url">
+                                  id="post_url"
+                                    value="<%= @post.url%>">
 
                   <label for="post_content" class="block mb-2 text-sm font-bold text-gray-700">Content</label>
-                  <textarea class="border-2 border-gray-200 w-[430px] h-[200px] font-bold text-xl mb-5"name="posts[content]" id="post_content"></textarea>
+                  <textarea class="border-2 border-gray-200 w-[430px] h-[200px] font-bold text-xl mb-5"name="posts[content]" id="post_content"><%= @post.content%></textarea>
                   <br />
+                  <input type="hidden"
+                          name="posts[sub_ids][]"
+                            value=""/>
                   <% Sub.all.each do |sub| %>
                     <label class="block">
-                        <input type="checkbox" name="posts[sub_ids][]" value="<%= sub.id%>"/>
+                        <input type="checkbox"
+                                name="posts[sub_ids][]"
+                                  value="<%= sub.id%>"
+                                    <%= "checked" if @post.sub_ids.include?(sub.id)%>/>
                         <%= sub.title %>
                     </label>
                   <% end %>
