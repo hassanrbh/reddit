@@ -1,15 +1,16 @@
 # == Schema Information
 #
-# Table name: post_subs
+# Table name: comments
 #
 #  id         :bigint           not null, primary key
-#  sub_id     :integer          not null
+#  content    :text             not null
+#  author_id  :integer          not null
 #  post_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 FactoryBot.define do
-  factory :post_sub do
+  factory :comment do
     
   end
 end

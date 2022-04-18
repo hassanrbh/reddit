@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   default_url_options :host => 'localhost', :port => 3000
-  
+
   root to: "subs#index"
 
   devise_scope :user do
@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, :only => [:show]
   resources :subs
-  resources :posts, except: [:index]
+  resources :posts, except: [:index] 
+  resources :comments, :only => [:create]
 end
