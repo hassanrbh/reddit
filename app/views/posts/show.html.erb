@@ -4,7 +4,7 @@
     <div class="font-medium pb-2"> <!-- data component -->
       <p class="text-gray-500 hover:text-gray-900 hover:transition-all duration-1000">Posted by: <a href="<%= user_path(@post.author_id)%>"><em class="text-blue-400"><%= current_user.username %></em></a>
           in: <a href="<%= sub_path(sub_post.id) %>" class="text-blue-400"><%= sub_post.title %></a>
-          over <%= @post.calculate_current_time %>
+          over <%= @post.calculate_post_current_time %>
       </p>
       <% if current_user.posts.find_by(:id => @post.id).present? %>
         <a href="<%= edit_post_path(@post.id)%>"><p class="pt-1">🧨Edit</p></a>
@@ -46,7 +46,6 @@
           </div>
         </div>
     </div> <!-- Commments Form Goes Here-->
-  </div>
 </section>
 
 <% @post.comments.each do |comment|%>

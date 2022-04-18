@@ -31,8 +31,18 @@ class Post < ApplicationRecord
         ("#{Time.now.hour - self.created_at.hour}h ago")
       elsif self.created_at.day < Time.now.day
         ("#{Time.now.day - self.created_at.day}d ago")
-      elsif self.created_at.month < Time.now.month
-        ("#{Time.now.month - sekf.created_at.month}m ago")
+      else self.created_at.month < Time.now.month
+        ("#{Time.now.month - self.created_at.month}m ago")
+      end
+    end
+
+    def calculate_post_current_time
+      if self.created_at.min < Time.now.min
+        ("#{Time.now.min - self.created_at.min}m ago")
+      elsif self.created_at.hour < Time.now.hour
+        ("#{Time.now.hour - self.created_at.hour}h ago")
+      elsif self.created_at.day < Time.now.day
+        ("#{Time.now.day - self.created_at.day}d ago")
       end
     end
 

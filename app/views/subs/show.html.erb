@@ -1,5 +1,5 @@
 <% moderator_sub = @sub.moderator %>
-
+</div>
 <div class="bg-white h-[143px] flex justify-between"> <!-- Profile Subs -->
     <div class="p-7">  <!-- The Subs Information -->
         <h1 class="uppercase font-bold text-xl">
@@ -37,8 +37,8 @@
             >Create Post</a>
 </section>
 <!-- post card -->
-<div class="grid grid-cols-5 grid-rows-[auto]">
-  <% @sub.posts.each do |post| %>
+<div class="grid grid-cols-4 grid-rows-[auto]">
+  <% @sub.posts.order(created_at: :desc).limit(20).each do |post| %>
     <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-[14px] max-w-md justify-start inline-block"><!--horizantil margin is just for display-->
        <div class="flex items-start px-4 py-6">
           <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="https://siecledigital.fr/wp-content/uploads/2021/08/reddit-valorisation-940x550.jpg" alt="avatar">
