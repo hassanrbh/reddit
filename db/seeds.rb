@@ -12,6 +12,6 @@
     :url => Faker::LoremFlickr.image(search_terms: ['reddit']),
     :content => Faker::Quote.matz,
     :sub_ids => [28],
-    :author_id => 7
+    :author_id => 5
   )
 end

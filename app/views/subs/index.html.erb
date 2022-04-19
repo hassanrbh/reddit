@@ -1,10 +1,20 @@
-<section class="text-black font-medium text-lg m-3 ml-[186px]">
-    <h4 class="text-base text-gray-700">Trending Today</h4>
+<section class="text-black font-medium text-lg m-3 ml-[170px]">
+    <h4 class="text-sm text-gray-700 ml-[50px] pb-4 font-bold">Trending Today 📈</h4>
     <div class=""> <!-- All The Subs Container-->
-        <% @subs.order(created_at: :desc).limit(4).each do |sub| %>
-            <div class="container m-auto bg-white h-[50px]"> <!-- Container of the subs cards -->
-              <%= sub.title%>
-            </div>
-        <% end %>
+        <div class="container m-auto h-[50px] flex"> <!-- Container of the subs cards -->
+            <% @subs.order(created_at: :desc).limit(5).each do |sub| %>
+                <a href="<%= sub_path(sub.id) %>">
+                    <div class="w-[238px] h-[180px] ml-10">  <!-- Image of the sub-->
+                        <div class="z-[1]">
+                        <img class="h-[138px] rounded-lg w-[200px] z-[1] absolute"src="https://siecledigital.fr/wp-content/uploads/2021/08/reddit-valorisation-940x550.jpg"/>
+                            <div class="relative z-10 overflow-scroll">
+                                <h4 class="font-bold text-sm first-letter:uppercase"><%= sub.title %></h4>
+                                <p class="text-sm "><%= sub.description %></p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            <% end %>
+        </div>
     </div>
 </section>

@@ -54,7 +54,6 @@ gem 'rack-mini-profiler'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 gem 'carrierwave', '~> 2.0'
-gem 'bullet', group: 'development'
 
 
 group :development, :test do
@@ -64,7 +63,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "rails-controller-testing"
   gem "faker"
-
+  gem "bullet"
   # speeding the development process
   gem "spring"
 end
