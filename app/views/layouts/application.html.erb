@@ -80,7 +80,12 @@
                             pt-[6px] pb-[6px] cursor-pointer hover:animate-pulsate-gray
                             bg-[skyblue]"/>
             </form>
-            <a class="w-[70px]" href="<%= user_path(current_user.id) %>"><i class="fa-solid fa-user fa-2xl m-[32px] ml-[20px] text-gray-500 cursor-pointer  hover:text-rose-300"></i></a>
+            <a class="w-[70px]"
+                href="<%= user_path(current_user.id) %>">
+                   <i class="fa-solid fa-user fa-2xl m-[32px] ml-[20px]
+                      text-gray-500 cursor-pointer  hover:text-rose-300">
+                    </i>
+            </a>
           <% end %>
         </div>
       </nav>
