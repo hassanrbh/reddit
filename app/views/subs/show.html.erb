@@ -1,14 +1,14 @@
 <% moderator_sub = @sub.moderator %>
 </div>
-<div class="bg-white h-[143px] flex justify-between"> <!-- Profile Subs -->
+<div class="bg-white h-[143px] flex justify-between dark:bg-slate-900"> <!-- Profile Subs -->
     <div class="p-7">  <!-- The Subs Information -->
-        <h1 class="uppercase font-bold text-xl">
+        <h1 class="uppercase font-bold text-xl dark:text-white">
             subs/<%= @sub.title %>
         </h1>
         <p class="lowercase pt-2 text-gray-700">
-            <span class="font-normal"><%= @sub.description %></span>
+            <span class="font-normal dark:text-white"><%= @sub.description %></span>
         </p>
-        <p class="pt-1 text-gray-700">
+        <p class="pt-1 text-gray-700 dark:text-white">
             Moderator by <em
                         class="font-light text-blue-400">
                             <a href="<%= user_path(moderator_sub.id) %>">
@@ -29,7 +29,7 @@
                   >Subscribe</a> <!-- Don't forget to add the subscription route-->
     </div>
 </div>
-<section class="m-[35px]">
+<section class="m-[35px] dark:bg-slate-900">
   <a href="<%= new_post_path %>"
         class="inline-block text-white font-bold border-[2px] border-[#3293db]
               rounded text-lg pt-[6px] pb-[6px] hover:animate-pulsate
@@ -37,7 +37,7 @@
             >Create Post</a>
 </section>
 <!-- post card -->
-<div class="grid grid-cols-4 grid-rows-[auto]">
+<div class="grid grid-cols-4 grid-rows-[auto] dark:bg-slate-900">
   <% @sub.posts.order(created_at: :desc).limit(20).each do |post| %>
     <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-[14px] max-w-md justify-start inline-block"><!--horizantil margin is just for display-->
        <div class="flex items-start px-4 py-6">

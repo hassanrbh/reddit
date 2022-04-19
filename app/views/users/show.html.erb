@@ -1,8 +1,8 @@
-<div class="bg-white h-[144px] w-full"> <!-- The Profile Data -->
+<div class="bg-white h-[144px] w-full dark:bg-slate-900"> <!-- The Profile Data -->
   <div class="p-7 font-bold text-2xl lowercase">  <!-- Username and joins -->
     <% if @user.online? %>
       <div class="flex">
-        <h4>users/<%= @user.username %></h4>
+        <h4 class="dark:text-white">users/<%= @user.username %></h4>
         <span class="text-green-400 text-sm pl-1">●</span>
       </div>
       <p class="text-blue-400 font-light text-sm pl-2">
@@ -18,7 +18,7 @@
       </p>
     <% end %>
     <p class="text-base text-gray-400 hover:text-black
-           transition-all duration-700 inline-block group">
+           transition-all duration-700 inline-block group dark:hover:text-white">
       Moderates: <% @user.subs.each do |sub_for_post| %>
         <a class="after:content-['🗡']"
              href="<%= sub_path(sub_for_post.id)%>"
@@ -27,7 +27,7 @@
     </p>
   </div>
 </div>
-<section class="grid grid-cols-[400px_auto]">
+<section class="grid grid-cols-[400px_auto] dark:bg-slate-900">
   <div class="">  <!-- Posts For the User 100px -->
     <% @user.subs.each do |sub_user|%>
       <div class="block w-[400px] m-[17px] p-3 rounded-lg bg-white text-gray-700 font-bold
@@ -38,8 +38,8 @@
       </div>
     <% end %>
   </div>
-  <div class="grid grid-cols-4 gap-1 m-4"> <!-- Subs for The User auto -->
-    <% @user.posts.order(created_at: :desc).limit(8).each do |post|%>
+  <div class="grid grid-cols-4 gap-1 m-4 dark:bg-slate-900"> <!-- Subs for The User auto -->
+    <% @user.posts.order(created_at: :desc).each do |post|%>
       <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-[14px]
           max-w-md justify-start opacity-60 hover:opacity-100 cursor-text transition-opacity ease-in-out duration-700"><!--horizantil margin is just for display-->
        <div class="flex items-start px-4 py-6">
