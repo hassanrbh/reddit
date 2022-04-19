@@ -1,10 +1,10 @@
 <section class="text-black font-medium text-lg m-3 ml-[186px]">
-    <h4>Trending Today</h4>
-    <div class="container"> <!-- All The Subs Container-->
-        <% @subs.each do |sub| %>
-            <div>
-                <a href="<%= sub_path(sub.id) %>"><%= sub.title %></a>
-            </div> <!-- Each Image Sub -->
+    <h4 class="text-base text-gray-700">Trending Today</h4>
+    <div class=""> <!-- All The Subs Container-->
+        <% @subs.order(created_at: :desc).limit(4).each do |sub| %>
+            <div class="container m-auto bg-white h-[50px]"> <!-- Container of the subs cards -->
+              <%= sub.title%>
+            </div>
         <% end %>
     </div>
 </section>
