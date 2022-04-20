@@ -4,7 +4,7 @@ class SubsController < ApplicationController
 
     def index
         if !params[:q].present?
-            @subs = Sub.includes(:posts)
+            @subs = Sub.all
         else
             @subs = Sub.where("title LIKE '%#{sanitize_sql(params[:q])}%'")
         end
