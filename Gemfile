@@ -45,7 +45,6 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 gem 'rack-mini-profiler'
-# gem 'gravatar_image_tag'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -53,7 +52,6 @@ gem 'rack-mini-profiler'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
-gem 'carrierwave', '~> 2.0'
 
 
 group :development, :test do
@@ -63,7 +61,6 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "rails-controller-testing"
   gem "faker"
-  gem "bullet"
   # speeding the development process
   gem "spring"
 end
@@ -85,6 +82,7 @@ end
 
 group :test do 
   gem "capybara"
-  gem "guard-rspec"
   gem "launchy"
 end
+
+gem "friendly_id", "~> 5.4"
