@@ -22,6 +22,6 @@ class Sub < ApplicationRecord
         :foreign_key => :moderator_id
 
     has_many :post_subs,
-              :class_name => 'PostSub', :foreign_key => :sub_id,:inverse_of => :sub
+            :class_name => 'PostSub', :foreign_key => :sub_id,:inverse_of => :sub
     has_many :posts, :through => :post_subs
 end

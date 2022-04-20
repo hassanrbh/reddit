@@ -27,15 +27,21 @@
 #  last_name              :string           not null
 #
 class User < ApplicationRecord
+  include Gravtastic
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # Include default devise modules. Others available are:
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :lockable, :timeoutable, :trackable
+        :recoverable, :rememberable, :validatable, :lockable, :timeoutable, :trackable
   before_validation :adding_username
 
   has_many :subs, :class_name => 'Sub', :primary_key => :id, :foreign_key => :moderator_id, :dependent => :destroy, inverse_of: :moderator
   has_many :posts, :class_name => 'Post', :primary_key => :id, :foreign_key => :author_id, :dependent => :destroy, inverse_of: :author
   has_many :comments, :class_name => 'Comment', :primary_key => :id, :foreign_key => :author_id, :dependent => :destroy
+  
+  gravtastic :secure => true,
+    :filetype => :gif,
+    :size => 40,
+    :default => :wavatar
 
   def last_login!
     if self.last_sign_in_at.hour < Time.now.hour
@@ -43,6 +49,10 @@ class User < ApplicationRecord
     elsif self.last_sign_in_at.day < Time.now.day
       ("#{Time.now.day - self.last_sign_in_at.day}day ago")
     end
+  end
+
+  def avatar_thumbnail
+    avatar.variant(resize: "150*150!").processed
   end
 
   def online?

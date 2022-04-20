@@ -43,7 +43,7 @@
       <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-[14px]
           max-w-md justify-start opacity-60 hover:opacity-100 cursor-text transition-opacity ease-in-out duration-700"><!--horizantil margin is just for display-->
         <div class="flex items-start px-4 py-6">
-          <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="https://siecledigital.fr/wp-content/uploads/2021/08/reddit-valorisation-940x550.jpg" alt="avatar">
+          <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="<%= @user.gravatar_url %>" alt="avatar">
           <div class="">
             <div class="flex items-center justify-between">
                 <a href="<%= post_path(post.id)%>"><h2 class="text-lg font-semibold text-gray-900 -mt-1"><%= post.title %></h2></a>

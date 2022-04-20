@@ -1,25 +1,24 @@
 <% moderator_sub = @sub.moderator %>
-</div>
 <div class="bg-white h-[143px] flex justify-between dark:bg-slate-900"> <!-- Profile Subs -->
-    <div class="p-7">  <!-- The Subs Information -->
-        <h1 class="uppercase font-bold text-xl dark:text-white">
+   <div class="p-7">  <!-- The Subs Information -->
+      <h1 class="uppercase font-bold text-xl dark:text-white">
             subs/<%= @sub.title %>
-        </h1>
-        <p class="lowercase pt-2 text-gray-700">
+      </h1>
+      <p class="lowercase pt-2 text-gray-700">
             <span class="font-normal dark:text-white"><%= @sub.description %></span>
-        </p>
-        <p class="pt-1 text-gray-700 dark:text-white">
+      </p>
+      <p class="pt-1 text-gray-700 dark:text-white">
             Moderator by <em
                         class="font-light text-blue-400">
-                            <a href="<%= user_path(moderator_sub.id) %>">
+                           <a href="<%= user_path(moderator_sub.id) %>">
                                     <%= moderator_sub.username %></a></em>
             <% if @sub.moderator.username == current_user.username %>
-                <span class="ml-3 font-light text-blue-400 before:content-['🧨']">
-                    <a href="<%= edit_sub_path(@sub.id) %>">Edit Sub</a>
-                </span>
+               <span class="ml-3 font-light text-blue-400 before:content-['🧨']">
+                  <a href="<%= edit_sub_path(@sub.id) %>">Edit Sub</a>
+               </span>
             <% end %>
-        </p>
-    </div>
+      </p>
+   </div>
 
     <div class=""> <!-- The Subscription Button -->
         <a href="<%= login_url %>"
@@ -38,10 +37,10 @@
 </section>
 <!-- post card -->
 <div class="grid grid-cols-4 grid-rows-[auto] dark:bg-slate-900">
-  <% @sub.posts.order(created_at: :desc).limit(20).each do |post| %>
+  <% @sub.posts.includes(:author).order(created_at: :desc).limit(20).each do |post| %>
     <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-[14px] max-w-md justify-start inline-block"><!--horizantil margin is just for display-->
        <div class="flex items-start px-4 py-6">
-          <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="https://siecledigital.fr/wp-content/uploads/2021/08/reddit-valorisation-940x550.jpg" alt="avatar">
+          <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="<%= post.author.gravatar_url %>" alt="avatar">
           <div class="">
              <div class="flex items-center justify-between">
                 <a href="<%= post_path(post.id)%>"><h2 class="text-lg font-semibold text-gray-900 -mt-1"><%= post.title %></h2></a>

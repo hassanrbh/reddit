@@ -49,7 +49,7 @@
 </section>
 
 <div class="container grid grid-cols-4 m-auto">
-  <% @post.comments.each do |comment|%>
+  <% @post.comments.includes(:author).each do |comment|%>
     <div class="border-2 border-indigo-300 w-[300px] mt-2 h-[200px] rounded-lg ml-10">
       <h4>By <%= comment.author.username %></h4>
     </div>
