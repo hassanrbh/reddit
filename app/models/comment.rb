@@ -24,4 +24,16 @@ class Comment < ApplicationRecord
               :class_name => 'Comment',
               :primary_key => :id,
               :foreign_key => :parent_comment_id
+
+
+  def calculate_comment_current_time
+    if self.created_at.min < Time.now.min
+      ("#{Time.now.min - self.created_at.min}m ago")
+    elsif self.created_at.hour < Time.now.hour
+      ("#{Time.now.hour - self.created_at.hour}h ago")
+    elsif self.created_at.day < Time.now.day
+      ("#{Time.now.day - self.created_at.day}d ago")
+    end
+  end
+
 end

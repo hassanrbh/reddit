@@ -50,8 +50,40 @@
 
 <div class="container grid grid-cols-4 m-auto">
   <% @post.comments.includes(:author).each do |comment|%>
-    <div class="border-2 border-indigo-300 w-[300px] mt-2 h-[200px] rounded-lg ml-10">
-      <h4>By <%= comment.author.username %></h4>
+    <div class="bg-white shadow-lg  w-[350px] mt-2 h-[230px] rounded-lg ml-3">
+      <div class="flex items-start px-4 py-3 h-20 border-b-2 border-b-gray-400 animate-pulse w-[100%]">
+        <img class="w-12 h-12 rounded-full object-cover mr-4 shadow hover:blur-sm hover:cursor-pointer" src="<%= comment.author.gravatar_url %>" alt="user who comment"/>
+        <% if comment.author.online? %>
+          <div class="flex">
+            <h3 class="font-bold pt-2 text-lg inline-block">
+              <a href="<%= user_path(comment.author.id) %>">users/<span class="hover:text-blue-300 cursor-pointer"><%= comment.author.username %>
+                  </span></a>
+            <span class="text-green-400 text-xs top-[-9px] relative ">●</span>
+            <p class="text-xs text-slate-500"><span class="hover:text-blue-400"><%= comment.calculate_comment_current_time %></span></p>
+          </div>
+        <% else %>
+          <div class="flex">
+            <h3 class="font-bold pt-2 text-lg inline-block">
+              <a href="<%= user_path(comment.author.id) %>">users/<span class="hover:text-blue-300 cursor-pointer"><%= comment.author.username %>
+                  </span></a>
+            <span class="text-rose-400 text-xs top-[-9px] relative ">●</span>
+          </div>
+        <% end %>
+        </h3>
+      </div>
+      <div class="px-4 py-3 text-sm h-[75px]">
+        <%= comment.content %>
+      </div>
+      <div class="flex mt-7 ml-2 mr-2 justify-between">
+        <i class="fas fa-thumbs-up text-blue-400 fa-2xl cursor-pointer"></i>
+        <a href="<%= comment_path(comment.id) %>" class="font-bold bg-blue-400 p-2 rounded-lg
+                    hover:opacity-100 hover:bg-black hover:text-white hover:ease-in-out
+                    hover:transition-all transition-colors duration-1000 hover:duration-1000
+                    hover:animate-none animate-pulse">
+          Load More
+        </button></a>
+        <i class="fas fa-thumbs-down text-rose-400 fa-2xl cursor-pointer"></i>
+      </div>
     </div>
   <% end %>
 </div>

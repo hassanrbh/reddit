@@ -41,7 +41,7 @@ class User < ApplicationRecord
   gravtastic :secure => true,
     :filetype => :gif,
     :size => 40,
-    :default => :wavatar
+    :default => :monsterid
 
   def last_login!
     if self.last_sign_in_at.hour < Time.now.hour
