@@ -37,7 +37,7 @@
         <a href="<%= sub_path(sub_user.id)%>"><p><%= sub_user.title %> 💣</p></a>
       </div>
     <% end %>
-    <% @user.comments.includes(:author).each do |comment|%>
+    <% @user.comments.where(parent_comment_id: nil).includes(:author).each do |comment|%>
     <div class="bg-white shadow-lg  w-[400px] mt-2 h-[230px] rounded-lg ml-4">
       <div class="flex items-start px-4 py-3 h-20 border-b-2 border-b-gray-400 animate-pulse w-[100%]">
         <img class="w-12 h-12 rounded-full object-cover mr-4 shadow hover:blur-sm hover:cursor-pointer" src="<%= comment.author.gravatar_url %>" alt="user who comment"/>
@@ -75,7 +75,7 @@
     </div>
   <% end %>
   </div>
-  <div class="grid grid-cols-4 gap-1 m-4 dark:bg-slate-900"> <!-- Subs for The User auto -->
+  <div class="grid grid-cols-4 m-4 gap-1 dark:bg-slate-900"> <!-- Subs for The User auto -->
     <% @user.posts.order(created_at: :desc).each do |post|%>
       <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-[14px]
           max-w-md justify-start opacity-60 hover:opacity-100 cursor-text transition-opacity ease-in-out duration-700"><!--horizantil margin is just for display-->

@@ -24,6 +24,7 @@ class Comment < ApplicationRecord
               :class_name => 'Comment',
               :primary_key => :id,
               :foreign_key => :parent_comment_id
+  
 
 
   def calculate_comment_current_time
@@ -35,5 +36,4 @@ class Comment < ApplicationRecord
       ("#{Time.now.day - self.created_at.day}d ago")
     end
   end
-
 end

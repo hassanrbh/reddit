@@ -1,0 +1,107 @@
+<% if @comment.parent_comment_id.present? %>
+    <% parent_comment = Comment.find_by(:id => @comment.parent_comment_id) %>
+<% end %>
+<section class="container mx-auto">
+<div class="bg-white h-[450px] w-auto mt-7 pl-[49px] pt-[25px] rounded-lg"> <!-- The White background -->
+    <div class="font-medium pb-2"> <!-- data component -->
+    <p class="text-gray-500 hover:text-gray-900 hover:transition-all duration-1000">Comment by: <a href="<%= user_path(@comment.author_id)%>"><em class="text-blue-400"><%= @comment.author.username %></em></a>
+        <% if @comment.parent_comment_id.present? %>
+            rep : <a class="text-blue-400" href="<%= comment_path(parent_comment.author.id) %>"><%= parent_comment.author.username %></a>
+            reply to: <a class="text-blue-400" href="<%= comment_path(@comment.parent_comment_id) %>">
+                <% if parent_comment.content.length > 10 %>
+                    <%= parent_comment.content.slice(0..20) %>
+                <% elsif parent_comment.content.length > 20 %>
+                    <%= parent_comment.content.slice(0..10) %>
+                <% else %>
+                    <%= parent_comment.content.slice(0..5) %>
+                <% end %>
+            </a>
+        <% end %>
+
+        in: <a href="<%= sub_path(@comment.post.subs.last.id) %>" class="text-blue-400"><%= @comment.post.subs.last.title %></a>
+        over <%= @comment.post.calculate_post_current_time %>
+    </p>
+    <% if current_user.posts.find_by(:id => @comment.post.id).present? %>
+        <a href="<%= edit_post_path(@comment.post.id)%>"><p class="pt-1">🧨Edit</p></a>
+    <% end %>
+    </div>
+    <div class="font-bold text-xl text-gray-800">  <!-- Post.title -->
+    <a href="<%= post_path(@comment.post.id) %>"><h1 class=""><%= @comment.post.title %></h1></a>
+    </div>
+    <div> <!-- Post.content-->
+    <p class="text-gray-600 hover:text-blue-400 hover:transition-all duration-700 shadow-outline"><%= @comment.content %></p>
+    </div>
+    <div>
+    <!-- comment form -->
+    <div class="flex mx-auto items-center justify-center mt-4">
+        <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-8" action="<%= comments_path %>" method="post">
+        <input type="hidden"
+                    name="authenticity_token"
+                        value="<%= form_authenticity_token %>"/>
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Reply to this comment</h2>
+            <input type="hidden"
+                    name="comments[post_id]"
+                    value="<%= @comment.post.id %>"/>
+            <input type="hidden"
+                    name="comments[parent_comment_id]"
+                    value="<%= @comment.id %>">
+            <div class="w-full md:w-full px-3 mb-2 mt-2">
+            <textarea class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="comments[content]" placeholder='Type Your Comment' required></textarea>
+            </div>
+            <div class="w-full md:w-full flex items-start px-3">
+            <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
+                <svg fill="none" class="w-5 h-5 text-gray-600 mr-1" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <p class="text-xs md:text-sm pt-px">You Know That He didn't ❤️‍🔥.</p>
+                </div>
+                <div class="-mr-1">
+                <input type='submit' class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 cursor-pointer rounded-lg tracking-wide mr-1 hover:bg-gray-100" value='Post Reply'>
+                </div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div> <!-- Commments Form Goes Here-->
+</section>
+
+<div class="container grid grid-cols-4 m-auto">
+<% @comment.child_comments.includes(:author).each do |comment|%>
+    <div class="bg-white shadow-lg  w-[350px] mt-2 h-[230px] rounded-lg ml-3">
+    <div class="flex items-start px-4 py-3 h-20 border-b-2 border-b-gray-400 animate-pulse w-[100%]">
+        <img class="w-12 h-12 rounded-full object-cover mr-4 shadow hover:blur-sm hover:cursor-pointer" src="<%= comment.author.gravatar_url %>" alt="user who comment"/>
+        <% if comment.author.online? %>
+        <div class="flex">
+            <h3 class="font-bold pt-2 text-lg inline-block">
+            <a href="<%= user_path(comment.author.id) %>">users/<span class="hover:text-blue-300 cursor-pointer"><%= comment.author.username %>
+                </span></a>
+            <span class="text-green-400 text-xs top-[-9px] relative ">●</span>
+            <p class="text-xs text-slate-500"><span class="hover:text-blue-400"><%= comment.calculate_comment_current_time %></span></p>
+        </div>
+        <% else %>
+        <div class="flex">
+            <h3 class="font-bold pt-2 text-lg inline-block">
+            <a href="<%= user_path(comment.author.id) %>">users/<span class="hover:text-blue-300 cursor-pointer"><%= comment.author.username %>
+                </span></a>
+            <span class="text-rose-400 text-xs top-[-9px] relative ">●</span>
+        </div>
+        <% end %>
+        </h3>
+    </div>
+    <div class="px-4 py-3 text-sm h-[75px]">
+        <%= comment.content %>
+    </div>
+    <div class="flex mt-7 ml-2 mr-2 justify-between">
+        <i class="fas fa-thumbs-up text-blue-400 fa-2xl cursor-pointer"></i>
+        <a href="<%= comment_path(comment.id) %>" class="font-bold bg-blue-400 p-2 rounded-lg
+                    hover:opacity-100 hover:bg-black hover:text-white hover:ease-in-out
+                    hover:transition-all transition-colors duration-1000 hover:duration-1000
+                    hover:animate-none animate-pulse">
+        Load More
+        </button></a>
+        <i class="fas fa-thumbs-down text-rose-400 fa-2xl cursor-pointer"></i>
+    </div>
+    </div>
+<% end %>
+</div>

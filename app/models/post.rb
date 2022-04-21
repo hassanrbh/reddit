@@ -16,9 +16,9 @@ class Post < ApplicationRecord
     validates :subs, presence: { message: 'must have at least one sub'}
 
     belongs_to :author,
-               :class_name => 'User',
-               :primary_key => :id,
-               :foreign_key => :author_id
+              :class_name => 'User',
+              :primary_key => :id,
+              :foreign_key => :author_id
 
     has_many :post_subs,
               :class_name => 'PostSub', :foreign_key => :post_id, :dependent => :destroy, :inverse_of => :post
@@ -48,5 +48,10 @@ class Post < ApplicationRecord
 
     def join_post_user
       Date.parse(self.created_at.strftime("%d/%m/%Y"))
+    end
+
+    def top_level_comments
+      self.comments.
+        where(parent_comment_id: nil)
     end
 end

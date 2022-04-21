@@ -28,6 +28,9 @@
             <input type="hidden"
                     name="comments[post_id]"
                       value="<%= @post.id %>"/>
+            <input type="hidden"
+                    name="comments[parent_comment_id]"
+                      value=""/>
             <div class="w-full md:w-full px-3 mb-2 mt-2">
               <textarea class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="comments[content]" placeholder='Type Your Comment' required></textarea>
             </div>
@@ -49,7 +52,7 @@
 </section>
 
 <div class="container grid grid-cols-4 m-auto">
-  <% @post.comments.includes(:author).each do |comment|%>
+  <% @post.comments.where(parent_comment_id: nil).includes(:author).each do |comment|%>
     <div class="bg-white shadow-lg  w-[350px] mt-2 h-[230px] rounded-lg ml-3">
       <div class="flex items-start px-4 py-3 h-20 border-b-2 border-b-gray-400 animate-pulse w-[100%]">
         <img class="w-12 h-12 rounded-full object-cover mr-4 shadow hover:blur-sm hover:cursor-pointer" src="<%= comment.author.gravatar_url %>" alt="user who comment"/>
