@@ -54,4 +54,12 @@ class Post < ApplicationRecord
       self.comments.
         where(parent_comment_id: nil)
     end
+
+    def comments_by_parent_id
+      comments_hash = Hash.new { |h,k| h[k] = [] }
+      self.comments.each do |comment|
+        comments_hash[comment.parent_comment_id] = comment
+      end
+      comments_hash
+    end
 end

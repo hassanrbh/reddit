@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(:id => params[:id])
     @sub = Sub.find_by(:id => params[:sub_id])
+    @comments_by_parent_id = @post.comments_by_parent_id
     render :show
   end
 
