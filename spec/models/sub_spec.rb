@@ -10,6 +10,7 @@
 #  updated_at   :datetime         not null
 #  avatar       :string
 #  image_date   :text
+#  slug         :string
 #
 require 'rails_helper'
 

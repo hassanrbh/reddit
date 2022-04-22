@@ -25,6 +25,8 @@
 #  username               :string
 #  first_name             :string           not null
 #  last_name              :string           not null
+#  slug                   :string
+#  score                  :integer          default(0)
 #
 require 'rails_helper'
 

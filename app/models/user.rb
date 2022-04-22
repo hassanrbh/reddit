@@ -25,6 +25,8 @@
 #  username               :string
 #  first_name             :string           not null
 #  last_name              :string           not null
+#  slug                   :string
+#  score                  :integer          default(0)
 #
 class User < ApplicationRecord
   include Gravtastic
@@ -34,6 +36,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable, :lockable, :timeoutable, :trackable
   before_validation :adding_username
+  before_validation :adding_signup_user_points
   friendly_id :username, use: %i[slugged history]
 
   has_many :subs, :class_name => 'Sub', :primary_key => :id, :foreign_key => :moderator_id, :dependent => :destroy, inverse_of: :moderator
@@ -68,5 +71,9 @@ class User < ApplicationRecord
   private
   def adding_username
     self.username = "#{self.first_name}".concat(self.last_name)
+  end
+
+  def adding_signup_user_points
+    self.score = 100
   end
 end

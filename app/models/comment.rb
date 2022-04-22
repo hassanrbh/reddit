@@ -9,6 +9,7 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  parent_comment_id :integer
+#  slug              :string
 #
 class Comment < ApplicationRecord
   extend FriendlyId
