@@ -86,4 +86,5 @@ group :test do
 end
 
 gem "friendly_id", "~> 5.4"
-gem 'bullet'
+gem "bullet"
+gem "kaminari"

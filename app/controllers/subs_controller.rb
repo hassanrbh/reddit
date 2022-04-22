@@ -4,9 +4,9 @@ class SubsController < ApplicationController
 
     def index
         if !params[:q].present?
-            @subs = Sub.all
+            @subs = Sub.page(params[:page]).per(4)
         else
-            @subs = Sub.where("title LIKE '%#{sanitize_sql(params[:q])}%'")
+            @sub = Sub.where("title LIKE '%#{sanitize_sql(params[:q])}%'").page(params[:page])
         end
     end
 

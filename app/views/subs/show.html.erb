@@ -1,4 +1,5 @@
 <% moderator_sub = @sub.moderator %>
+
 <div class="bg-white h-[143px] flex justify-between dark:bg-slate-900"> <!-- Profile Subs -->
    <div class="p-7">  <!-- The Subs Information -->
       <h1 class="uppercase font-bold text-xl dark:text-white">
@@ -37,7 +38,7 @@
 </section>
 <!-- post card -->
 <div class="grid grid-cols-4 grid-rows-[auto] dark:bg-slate-900">
-<% @sub.posts.includes(:author).order(created_at: :desc).limit(20).each do |post| %>
+<% @sub.posts.includes(:author).order(created_at: :desc).each do |post| %>
    <div class="flex bg-white shadow-lg rounded-lg mx-4 mb-[14px] max-w-md justify-start"><!--horizantil margin is just for display-->
       <div class="flex items-start px-4 py-6">
          <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="<%= post.author.gravatar_url %>" alt="avatar">

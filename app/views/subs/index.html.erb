@@ -1,6 +1,7 @@
 <section class="text-black font-medium text-lg m-3 ml-[170px] dark:text-white">
     <h4 class="text-sm text-gray-700 ml-[50px] pb-4 font-bold">Trending Today 📈</h4>
     <div class=""> <!-- All The Subs Container-->
+        <%= paginate @subs %>
         <div class="container m-auto h-[50px] grid grid-cols-4"> <!-- Container of the subs cards -->
             <% @subs.order(created_at: :desc).each do |sub| %>
                 <a href="<%= sub_path(sub.id) %>">
