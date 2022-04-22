@@ -54,25 +54,15 @@ class PostsController < ApplicationController
   private
 
   def vote(direction)
-    post = Post.find_by(:id => params[:id])
-    if direction == 1
-      Vote.find_or_create_by!(
-        :user_id => current_user.id,
-        :votable_type => 'Post',
-        :votable_id => post.id,
-        :value => direction
-      )
-      redirect_to post_path(post.id) 
-    else
-      Vote.find_or_create_by!(
-        :user_id => current_user.id,
-        :votable_type => 'Post',
-        :votable_id => post.id,
-        :value => direction
-      )
-      redirect_to post_path(post.id)
+    @post = Post.find(params[:id])
+    @vote = @post.votes.find_or_initialize_by(user: current_user)
+
+    unless @vote.update(value: direction)
+      flash[:errors] = @vote.errors.full_messages
     end
+    redirect_to comment_path(@post.id)
   end
+
   def posts_params
     params.require(:posts).permit(:title,:url, :content,:user_id,sub_ids: [])
   end

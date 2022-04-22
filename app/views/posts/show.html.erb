@@ -78,15 +78,31 @@
         <%= comment.content %>
       </div>
       <div class="flex mt-7 ml-2 mr-2 justify-between">
-        <i class="fas fa-thumbs-up text-blue-400 fa-2xl cursor-pointer"></i>
-        <a href="<%= comment_path(comment.id) %>" class="font-bold bg-blue-400 p-2 rounded-lg
-                    hover:opacity-100 hover:bg-black hover:text-white hover:ease-in-out
-                    hover:transition-all transition-colors duration-1000 hover:duration-1000
-                    hover:animate-none animate-pulse">
-          Load More
-        </button></a>
-        <i class="fas fa-thumbs-down text-rose-400 fa-2xl cursor-pointer"></i>
-      </div>
+            <div class="flex text-gray-700 text-sm mr-3">
+                <form method="post" action="<%= upvote_comment_path(comment.id) %>">
+                    <input type="hidden"
+                            name="authenticity_token"
+                            value="<%= form_authenticity_token %>"/>
+                    <button type="submit"><i class="fa-thumbs-up fa-regular fa-xl"></i></button>
+                </form>
+                <span class="ml-1 text-black font-bold"><%= comment.votes.where(:value => 1).count %></span> <!-- Don't forget to add likes -->
+            </div>
+            <a href="<%= comment_path(comment.id) %>" class="font-bold bg-blue-400 p-2 rounded-lg
+                        hover:opacity-100 hover:bg-black hover:text-white hover:ease-in-out
+                        hover:transition-all transition-colors duration-1000 hover:duration-1000
+                        hover:animate-none animate-pulse">
+            Load More
+            </button></a>
+            <div class="flex text-gray-700 text-sm mr-3">
+                <form method="post" action="<%= downvote_comment_path(comment.id) %>">
+                    <input type="hidden"
+                        name="authenticity_token"
+                        value="<%= form_authenticity_token %>"/>
+                    <button type="submit"><i class="fa-regular fa-thumbs-down fa-xl"></i></button>
+                </form>
+                <span class="ml-1 text-black font-bold"><%= comment.votes.where(:value => -1).count %></span> <!-- Don't forget to add likes -->
+            </div>
+        </div>
     </div>
   <% end %>
 </div>

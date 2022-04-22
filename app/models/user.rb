@@ -48,6 +48,7 @@ class User < ApplicationRecord
     :filetype => :gif,
     :size => 40,
     :default => :monsterid
+  
 
   def last_login!
     if self.last_sign_in_at.hour < Time.now.hour
@@ -55,6 +56,13 @@ class User < ApplicationRecord
     elsif self.last_sign_in_at.day < Time.now.day
       ("#{Time.now.day - self.last_sign_in_at.day}day ago")
     end
+  end
+
+  def add_expected_points
+    comments_score = self.comments.count
+    likes_score = self.likes.where(:value => 1)
+    unlike_score = self.likes.where(:value => -1)
+    self.score = (comments_score*5) + (likes_score*2) - (unlike_score*2)
   end
 
   def avatar_thumbnail
