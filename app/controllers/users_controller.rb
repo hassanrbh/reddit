@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
     def show
-        @user = User.find_by(:id => params[:id])
+        @user = User.friendly.find(params[:id])
+
+        if params[:id] != @user.slug
+            return redirect_to @user, :status => :moved_permanently
+        end
         @users = User.all
     end
 end

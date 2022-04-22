@@ -12,6 +12,16 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, :only => [:show]
   resources :subs
-  resources :posts, except: [:index] 
-  resources :comments, :only => [:create,:show]
+  resources :posts, except: [:index] do
+    member do
+      post "upvote"
+      post "downvote"
+    end
+  end
+  resources :comments, :only => [:create,:show] do 
+    member do 
+      post "upvote"
+      post "downvote"
+    end
+  end
 end

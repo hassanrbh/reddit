@@ -28,11 +28,13 @@
 #
 class User < ApplicationRecord
   include Gravtastic
+  extend FriendlyId
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # Include default devise modules. Others available are:
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable, :lockable, :timeoutable, :trackable
   before_validation :adding_username
+  friendly_id :username, use: %i[slugged history]
 
   has_many :subs, :class_name => 'Sub', :primary_key => :id, :foreign_key => :moderator_id, :dependent => :destroy, inverse_of: :moderator
   has_many :posts, :class_name => 'Post', :primary_key => :id, :foreign_key => :author_id, :dependent => :destroy, inverse_of: :author
@@ -60,6 +62,9 @@ class User < ApplicationRecord
     updated_at > 1.minutes.ago
   end
 
+  def should_generate_new_friendly_id?
+    username_changed? || slug.blank?
+  end
   private
   def adding_username
     self.username = "#{self.first_name}".concat(self.last_name)

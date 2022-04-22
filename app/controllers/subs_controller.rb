@@ -11,8 +11,10 @@ class SubsController < ApplicationController
     end
 
     def show
-        @sub = Sub.find_by(:id => params[:id])
-        render :show
+        @sub = Sub.friendly.find(params[:id])
+        if params[:id] != @sub.slug
+            return redirect_to @sub, :status => :moved_permanently
+        end
     end
 
     def new

@@ -12,10 +12,12 @@
 #  image_date   :text
 #
 class Sub < ApplicationRecord
+    extend FriendlyId
     validates :title, presence: true
     validates :description, presence: true
     validates :moderator_id, presence: true
-
+    friendly_id :title, use: %i[slugged history]
+    
     belongs_to :moderator,
         :class_name => 'User',
         :primary_key => :id,
