@@ -23,7 +23,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  username               :string
-#  first_name             :string           not null 
+#  first_name             :string           not null
 #  last_name              :string           not null
 #
 class User < ApplicationRecord
@@ -37,6 +37,7 @@ class User < ApplicationRecord
   has_many :subs, :class_name => 'Sub', :primary_key => :id, :foreign_key => :moderator_id, :dependent => :destroy, inverse_of: :moderator
   has_many :posts, :class_name => 'Post', :primary_key => :id, :foreign_key => :author_id, :dependent => :destroy, inverse_of: :author
   has_many :comments, :class_name => 'Comment', :primary_key => :id, :foreign_key => :author_id, :dependent => :destroy
+  has_many :votes
   
   gravtastic :secure => true,
     :filetype => :gif,

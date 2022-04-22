@@ -24,6 +24,7 @@ class Post < ApplicationRecord
               :class_name => 'PostSub', :foreign_key => :post_id, :dependent => :destroy, :inverse_of => :post
     has_many :subs, :through => :post_subs
     has_many :comments
+    has_many :votes, as: :votable
 
     # Is not finished Yey, still the bug of the (month date)
     def calculate_current_time

@@ -24,7 +24,7 @@ class Comment < ApplicationRecord
               :class_name => 'Comment',
               :primary_key => :id,
               :foreign_key => :parent_comment_id
-  
+  has_many :votes, as: :votable
 
 
   def calculate_comment_current_time
