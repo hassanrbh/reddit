@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
   def show
-    @comment = Comment.find_by(:id => params[:id])
-    render :show
+    @comment = Comment.friendly.find(params[:id])
+    if params[:id] != @comment.slug
+      return redirect_to @comment, :status => :moved_permanently
+    end
   end
   def create
     @comment = current_user.comments.new(comments_params)

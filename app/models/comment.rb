@@ -11,8 +11,9 @@
 #  parent_comment_id :integer
 #
 class Comment < ApplicationRecord
+  extend FriendlyId
   validates :content, presence: true
-
+  friendly_id :content, use: %i[slugged history]
   belongs_to :author, :class_name => 'User'
   belongs_to :post
   belongs_to :child_comments,

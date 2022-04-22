@@ -12,8 +12,10 @@
 #  updated_at :datetime         not null
 #
 class Post < ApplicationRecord
+    extend FriendlyId
     validates :title, :presence => true
     validates :subs, presence: { message: 'must have at least one sub'}
+    friendly_id :title, use: %i[slugged history]
 
     belongs_to :author,
               :class_name => 'User',
