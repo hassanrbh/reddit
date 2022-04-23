@@ -11,13 +11,15 @@
 #  avatar       :string
 #  image_date   :text
 #  slug         :string
+#  subscriptors :integer          default([]), is an Array
 #
 class Sub < ApplicationRecord
     extend FriendlyId
     validates :title, presence: true
     validates :description, presence: true
     validates :moderator_id, presence: true
-    friendly_id :title, use: %i[slugged history]
+    validates :subscriptors, presence: true
+friendly_id :title, use: %i[slugged history]
     
     belongs_to :moderator,
         :class_name => 'User',

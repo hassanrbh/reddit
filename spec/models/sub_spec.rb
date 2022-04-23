@@ -11,6 +11,7 @@
 #  avatar       :string
 #  image_date   :text
 #  slug         :string
+#  subscriptors :integer          default([]), is an Array
 #
 require 'rails_helper'
 

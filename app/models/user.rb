@@ -36,7 +36,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable, :lockable, :timeoutable, :trackable
   before_validation :adding_username
-  before_validation :adding_signup_user_points
+  around_create :adding_signup_user_points
   friendly_id :username, use: %i[slugged history]
 
   has_many :subs, :class_name => 'Sub', :primary_key => :id, :foreign_key => :moderator_id, :dependent => :destroy, inverse_of: :moderator
@@ -60,9 +60,11 @@ class User < ApplicationRecord
 
   def add_expected_points
     comments_score = self.comments.count
-    likes_score = self.likes.where(:value => 1)
-    unlike_score = self.likes.where(:value => -1)
-    self.score = (comments_score*5) + (likes_score*2) - (unlike_score*2)
+    likes_score = self.votes.where(:value => 1).count
+    unlike_score = self.votes.where(:value => -1).count
+    total = (comments_score*5) + (likes_score*2) - (unlike_score*2)
+    self.score += total
+    self.save
   end
 
   def avatar_thumbnail

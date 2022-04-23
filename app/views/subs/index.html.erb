@@ -3,14 +3,24 @@
     <div class=""> <!-- All The Subs Container-->
         <%= paginate @subs %>
         <div class="container m-auto h-[50px] grid grid-cols-4"> <!-- Container of the subs cards -->
-            <% @subs.order(created_at: :desc).each do |sub| %>
+            <% @subs.order(created_at: :desc).includes(:moderator).each do |sub| %>
                 <a href="<%= sub_path(sub.id) %>">
-                    <div class="w-[238px] h-[180px] ml-10">  <!-- Image of the sub-->
-                        <div class="z-[1]">
-                        <img class="h-[138px] rounded-lg w-[200px] z-[1] absolute"src="https://siecledigital.fr/wp-content/uploads/2021/08/reddit-valorisation-940x550.jpg"/>
-                            <div class="relative z-10 overflow-scroll">
-                                <h4 class="font-bold text-sm first-letter:uppercase"><%= sub.title %></h4>
-                                <p class="text-sm "><%= sub.description %></p>
+                    <div class="w-[238px] h-[200px] ml-10">  <!-- Image of the sub-->
+                        <img class="h-[150px] rounded-lg w-[230px] z-[1] absolute" src="<%= sub.moderator.gravatar_url%>"/>
+                        <div class="relative z-10 w-40">
+                            <h4 class="font-bold text-gray-900 ml-2 dark:text-white text-sm first-letter:uppercase"><%= sub.title %></h4>
+                            <% if sub.description.length > 36 %>
+                                <p class="text-sm text-gray-500 ml-2 dark:text-white"><%= sub.description.slice(0..30)%> ...</p>
+                            <% elsif sub.description.length > 20 %>
+                                <p class="text-sm text-gray-500 ml-2 dark:text-white"><%= sub.description.slice(0..40)%> ...</p>
+                            <% else %>  
+                                <p class="text-sm text-gray-500 ml-2 dark:text-white"><%= sub.description%> ...</p>
+                            <% end %>
+                            <div class="flex">
+                                <img class="w-12 h-12 rounded-full relative top-5 left-3 object-cover mr-4 shadow hover:blur-sm hover:cursor-pointer" src="<%= sub.moderator.gravatar_url %>" alt="user who comment"/>
+                                <p class="text-sm ml-1 dark:text-white relative top-8  text-slate-900">
+                                    Score: <span class="text-blue-700"><%= sub.moderator.score %></span>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -18,4 +28,13 @@
             <% end %>
         </div>
     </div>
+</section>
+<section class="text-black font-medium text-lg m-[4.5rem] ml-[4.5rem] dark:text-white mt-[7.5rem]">
+    <h4 class="text-sm text-gray-700 ml-[50px] pb-4 font-bold">Popular posts 📈</h4>
+    <div class="grid grid-cols-4 dark:bg-slate-900">
+    <% Sub.all.order(created_at: :desc).each do |sub| %>
+        <% if sub.subscriptors.include?(current_user.id) %>
+            <%= render 'subscriptors', sub: sub %>
+        <% end %>
+    <% end %>
 </section>

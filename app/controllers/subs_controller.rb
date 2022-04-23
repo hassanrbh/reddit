@@ -2,7 +2,7 @@ class SubsController < ApplicationController
     before_action :authenticate_user!
     before_action :clarify_user!, only: [:edit, :update]
 
-    def index
+    def index 
         if !params[:q].present?
             @subs = Sub.page(params[:page]).per(4)
         else
@@ -20,6 +20,18 @@ class SubsController < ApplicationController
     def new
         @sub = Sub.new
         render :new
+    end
+
+    def subscribe
+        @sub = Sub.find(params[:id])
+        if !@sub.subscriptions.include?(current_user.id)
+            @sub.subscriptors << current_user.id
+            @sub.save!
+            redirect_to @sub
+        else
+            flash[:notice] = "Subscription has already been did"
+            redirect_to @sub
+        end
     end
 
     def create
