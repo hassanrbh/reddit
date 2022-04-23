@@ -18,7 +18,7 @@ class Sub < ApplicationRecord
     validates :title, presence: true
     validates :description, presence: true
     validates :moderator_id, presence: true
-    validates :subscriptors, presence: true
+    
 friendly_id :title, use: %i[slugged history]
     
     belongs_to :moderator,
