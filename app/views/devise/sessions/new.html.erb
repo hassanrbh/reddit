@@ -15,8 +15,8 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="text-left pt-3 w-full">
             <p class="text-red-600 font-bold text-base"><%= alert %></p>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "Email", class: "p-1 rounded-lg w-full bg-gray-100 shadow-md focus:outline-none focus:border-2 border-cyan-500"%>
-            <%= f.password_field :password, autocomplete: "current-password",placeholder: "Password", class: "block p-1 mt-3 w-full rounded-lg bg-gray-100 shadow-md focus:outline-none focus:border-2 border-cyan-500"%>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "Email", class: "p-1 rounded-lg w-full transition-[w-full] ease-in-out duration-1000 bg-gray-100 shadow-md focus:outline-none focus:border-2 border-cyan-500"%>
+            <%= f.password_field :password, autocomplete: "current-password",placeholder: "Password", class: "block p-1 mt-3 w-full transition-width ease-in-out duration-1000 rounded-lg bg-gray-100 shadow-md focus:outline-none focus:border-2 border-cyan-500"%>
             <a class="text-sm text-cyan-600 underline" href="<%= new_password_path(resource_name) %>">Forgot password?</a>
           </div>
           <% if devise_mapping.rememberable? %>
@@ -25,7 +25,7 @@
               <%= f.label :remember_me %>
             </div>
           <% end %>
-          <%= f.submit "Sign In",class: "bg-cyan-200 p-2 pr-5 pl-5 text-gray-800 font-semibold rounded-xl border-cyan-700 focus:ring-2 m-4" %>
+          <%= f.submit "Sign In",class: "cursor-pointer bg-cyan-200 p-2 pr-5 pl-5 text-gray-800 font-semibold rounded-xl border-cyan-700 focus:ring-2 m-4" %>
       <% end %>
     </div>
   </div>
