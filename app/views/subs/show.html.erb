@@ -8,17 +8,22 @@
       <p class="lowercase pt-2 text-gray-700">
             <span class="font-normal dark:text-white"><%= @sub.description %></span>
       </p>
-      <p class="pt-1 text-gray-700 dark:text-white">
-            Moderator by <em
-                        class="font-light text-blue-400">
-                           <a href="<%= user_path(moderator_sub.id) %>">
-                                    <%= moderator_sub.username %></a></em>
-            <% if @sub.moderator.username == current_user.username %>
-               <span class="ml-3 font-light text-blue-400 before:content-['🧨']">
-                  <a href="<%= edit_sub_path(@sub.id) %>">Edit Sub</a>
-               </span>
-            <% end %>
-      </p>
+      <div class="flex">
+         <p class="pt-1 text-gray-700 dark:text-white">
+               Moderator by <em
+                           class="font-light text-blue-400">
+                              <a href="<%= user_path(moderator_sub.id) %>">
+                                       <%= moderator_sub.username %></a></em>
+               <% if @sub.moderator.username == current_user.username %>
+                  <span class="ml-3 font-light text-blue-400 before:content-['🧨']">
+                     <a href="<%= edit_sub_path(@sub.id) %>">Edit Sub</a>
+                  </span>
+               <% end %> 
+         </p>
+         <p class="font-bold text-base ml-3 mt-1 text-gray-500">
+            <span class="text-sky-500"><%= @sub.subscriptors.count %></span> members
+         </p>
+      </div>
    </div>
 
    <div class=""> <!-- The Subscription Button -->
