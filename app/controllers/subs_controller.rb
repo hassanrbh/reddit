@@ -59,7 +59,6 @@ class SubsController < ApplicationController
         if @sub.save
             flash[:notice] = "Sub Created Successfully 🎒"
             redirect_to sub_url(@sub.id)
-            UserMailer.notify_sub(current_user,@sub).deliver_now
         else
             # UserMailer.with(user: current_user,sub: @sub).notify_sub_error.deliver_now
             flash[:error] = "Failed to Create Sub 🔫"
