@@ -27,10 +27,10 @@ class SubsController < ApplicationController
         if !@sub.subscriptors.include?(current_user.id)
             @sub.subscriptors << current_user.id
             @sub.save!
-            redirect_to @sub
+            redirect_to subs_path
         else
             flash[:notice] = "Subscription has already been did"
-            redirect_to @sub
+            redirect_to subs_path
         end
     end
 

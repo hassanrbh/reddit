@@ -36,7 +36,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable, :lockable, :timeoutable, :trackable
   before_validation :adding_username
-  around_create :adding_signup_user_points
+  before_validation :adding_signup_user_points
   friendly_id :username, use: %i[slugged history]
 
   has_many :subs, :class_name => 'Sub', :primary_key => :id, :foreign_key => :moderator_id, :dependent => :destroy, inverse_of: :moderator
