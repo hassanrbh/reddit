@@ -4,7 +4,7 @@
         <%= paginate @subs %>
         <div class="container m-auto h-[50px] grid grid-cols-4"> <!-- Container of the subs cards -->
             <% @subs.order(created_at: :desc).includes(:moderator).each do |sub| %>
-                <a href="<%= sub_path(sub.id) %>">
+                <a href="<%= sub_path(sub) %>">
                     <div class="w-[238px] h-[200px] ml-10">  <!-- Image of the sub-->
                         <img class="h-[150px] rounded-lg w-[230px] z-[1] absolute" src="<%= sub.moderator.gravatar_url%>"/>
                         <div class="relative z-10 w-40">

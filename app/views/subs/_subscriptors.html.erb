@@ -4,7 +4,7 @@
          <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="<%= post.author.gravatar_url %>" alt="avatar">
          <div class="">
             <div class="flex items-center justify-between">
-               <a href="<%= post_path(post.id)%>"><h2 class="text-lg font-semibold text-gray-900 -mt-1"><%= post.title %></h2></a>
+               <a href="<%= post_path(post)%>"><h2 class="text-lg font-semibold text-gray-900 -mt-1"><%= post.title %></h2></a>
                <small class="text-sm p-3 text-gray-700 text-blue-500"><%= post.calculate_current_time %></small>
             </div>
             <p class="text-gray-700">Joined <%= post.join_post_user %> </p>
