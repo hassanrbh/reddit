@@ -24,7 +24,7 @@ class SubsController < ApplicationController
 
     def subscribe
         @sub = Sub.find(params[:id])
-        if !@sub.subscriptions.include?(current_user.id)
+        if !@sub.subscriptors.include?(current_user.id)
             @sub.subscriptors << current_user.id
             @sub.save!
             redirect_to @sub

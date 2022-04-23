@@ -22,11 +22,14 @@
    </div>
 
    <div class=""> <!-- The Subscription Button -->
-      <a href="<%= login_url %>"
-               class="inline-block text-white font-bold border-[3px] border-orange-500
+      <form action="<%= subscribe_sub_path(@sub.id) %>" method="post">
+         <input type="hidden"
+                  name="authenticity_token"
+                     value="<%= form_authenticity_token %>">
+         <input type="submit" value="Subscribe" class="inline-block text-white font-bold border-[3px] border-orange-500
                   rounded-lg text-lg pr-[20px] pl-[20px] m-[24px]
-                  pt-[6px] pb-[6px] hover:animate-pulsate bg-orange-500"
-                  >Subscribe</a> <!-- Don't forget to add the subscription route-->
+                  pt-[6px] pb-[6px] hover:animate-pulsate bg-orange-500 cursor-pointer"/>
+      </form>
    </div>
 </div>
 <section class="m-[35px] dark:bg-slate-900">
