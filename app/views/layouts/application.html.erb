@@ -48,11 +48,14 @@
           </svg></a>
         </div>
         <div class="">
-          <input type="search" placeholder="   Search Reddit ..."
-              class="mt-2 ml-20 w-[596px] h-[50px] bg-gray-100 rounded-lg hover:border-2
-                    hover:border-rose-400 font-bold shadow shadow-cyan-50 hover:transtion-all ease-in-out"
-                />
-          <i class="fa-solid fa-magnifying-glass fa-xl pl-10 m-[-80px]"></i>
+          <form action="<%= search_subs_path %>" method="post">
+            <input type="search" placeholder="   Search Reddit ..." name="search", oninput="this.form.requestSubmit()"
+                class="mt-2 ml-20 w-[596px] h-[50px] bg-gray-100 rounded-lg hover:border-2
+                      font-bold shadow shadow-cyan-50 hover:transtion-all ease-in-out"
+                  />
+            <i class="fa-solid fa-magnifying-glass fa-xl pl-10 m-[-80px]"></i>
+          </form>
+          <div id="search_results" class="text-white font-bold text-base ml-[100px] mt-2"></div>
         </div>
         <div class="pl-80 flex justify-end">  <!-- login and sign up buttons and an advertising icon -->
           <a href="#"><i class="fa-solid fa-2xl fa-rectangle-ad m-[34px] ml-[20px] mr-[20px] text-[skyblue] hover:animate-ping hover:text-rose-300"></i></a>

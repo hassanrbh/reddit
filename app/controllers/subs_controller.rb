@@ -34,6 +34,24 @@ class SubsController < ApplicationController
         end
     end
 
+    def search
+        if params[:search].present?
+            @subs = Sub.where("title ILIKE '%#{params[:search]}%'")
+            @posts = Post.where("title ILIKE '%#{params[:search]}%'")
+        else
+            @subs = []
+            @posts = []
+        end
+        respond_to do |format|
+            format.turbo_stream do 
+                render turbo_stream: turbo_stream.update("search_results",
+                        partial: "subs/search_results",
+                        locals: {subs: @subs}
+                )
+            end
+        end
+    end
+
     def create
         debugger
         @sub = Sub.new(subs_params)

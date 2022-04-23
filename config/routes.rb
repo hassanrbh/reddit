@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     member do
       post "subscribe"
     end
+    collection do 
+      post "search"
+    end
   end
   resources :posts, except: [:index] do
     member do

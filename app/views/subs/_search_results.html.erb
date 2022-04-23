@@ -1,0 +1,54 @@
+<div class="">
+    <div class="inline-flex flex-col justify-center relative text-gray-500 rounded ">
+        <% if !@subs.empty? && !@posts.empty? %>
+            <ul class="bg-white border border-gray-100 w-full mt-2 scale-75 rounded-lg ml-1">
+                <% @subs.each do |sub_model| %>
+                    <% if sub_model.subscriptors.include?(current_user.id) %>
+                        <li class="pl-8 pr-2 py-1 border-b-2 ml-1 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900 hover:animate-pulse">
+                            <i class="fas fa-subscript"></i>
+                            <a href="<%= sub_path(sub_model.id) %>"><b class="text-green-400"><%= highlight(sub_model.title.slice(0..4),params[:search]) %></b><%= highlight(sub_model.title.slice(4..sub_model.title.length),params[:search]) %></a>
+                        </li>
+                    <% else %>
+                        <li class="pl-8 pr-2 py-1 border-b-2 ml-1 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900 hover:animate-pulse">
+                            <i class="fas fa-blog"></i>
+                            <a href="<%= sub_path(sub_model.id) %>"><b class="text-rose-400"><%= highlight(sub_model.title.slice(0..4),params[:search]) %></b><%= highlight(sub_model.title.slice(4..sub_model.title.length),params[:search]) %></a>
+                        </li>
+                    <% end %>
+                <% end %>
+            </ul>
+            <ul class="bg-white border border-gray-100 w-full mt-2 scale-75 rounded-lg ml-1">
+                <% @posts.each do |post| %>
+                    <li class="pl-8 pr-2 py-1 border-b-2 ml-1 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900 hover:animate-pulse animate-none">
+                        <i class="fas fa-subscript"></i>
+                        <a href="<%= post_path(post.id) %>"><b class="text-blue-400"><%= highlight(post.title.slice(0..4),params[:search]) %></b><%= highlight(post.title.slice(4..post.title.length),params[:search]) %></a>
+                    </li>
+                <% end %>
+            </ul>
+        <% elsif @subs.empty? %>
+            <ul class="bg-white border border-gray-100 w-full mt-2 scale-75 rounded-lg ml-1">
+                <% @posts.each do |post| %>
+                    <li class="pl-8 pr-2 py-1 border-b-2 ml-1 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900 hover:animate-pulse animate-none">
+                        <i class="fas fa-subscript"></i>
+                        <a href="<%= post_path(post.id) %>"><b class="text-blue-400"><%= highlight(post.title.slice(0..4),params[:search]) %></b><%= highlight(post.title.slice(4..post.title.length),params[:search]) %></a>
+                    </li>
+                <% end %>
+            </ul>
+        <% elsif @posts.empty? %>
+            <ul class="bg-white border border-gray-100 w-full mt-2 scale-75 rounded-lg ml-1">
+                <% @subs.each do |sub_model| %>
+                    <% if sub_model.subscriptors.include?(current_user.id) %>
+                        <li class="pl-8 pr-2 py-1 border-b-2 ml-1 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900 hover:animate-pulse">
+                            <i class="fas fa-subscript"></i>
+                            <a href="<%= sub_path(sub_model.id) %>"><b class="text-green-400"><%= highlight(sub_model.title.slice(0..4),params[:search]) %></b><%= highlight(sub_model.title.slice(4..sub_model.title.length),params[:search]) %></a>
+                        </li>
+                    <% else %>
+                        <li class="pl-8 pr-2 py-1 border-b-2 ml-1 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900 hover:animate-pulse">
+                            <i class="fas fa-blog"></i>
+                            <a href="<%= sub_path(sub_model.id) %>"><b class="text-rose-400"><%= highlight(sub_model.title.slice(0..4),params[:search]) %></b><%= highlight(sub_model.title.slice(4..sub_model.title.length),params[:search]) %></a>
+                        </li>
+                    <% end %>
+                <% end %>
+            </ul>
+        <% end %>
+    </div>
+</div>
