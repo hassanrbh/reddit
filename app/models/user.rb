@@ -75,6 +75,23 @@ class User < ApplicationRecord
     updated_at > 1.minutes.ago
   end
 
+  def calculate_votes_post
+    total_points = 0
+    self.posts.each do |post|
+      post_points = post.votes.count
+      total_points += post_points
+    end
+    total_points
+  end
+  def calculate_votes_comments
+    total_points = 0
+    self.comments.each do |comment|
+      post_points = comment.votes.count
+      total_points += post_points
+    end
+    total_points
+  end
+
   def should_generate_new_friendly_id?
     username_changed? || slug.blank?
   end

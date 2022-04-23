@@ -12,6 +12,12 @@
         <p class="text-sm ml-1 dark:text-white text-slate-900">
           Score: <span class="text-green-400"><%= @user.score %></span>
         </p>
+        <p class="text-sm ml-1 dark:text-white text-slate-900">
+          Total Post votes: <span class="text-green-400"><%= @user.calculate_votes_post %></span>
+        </p>
+        <p class="text-sm ml-1 dark:text-white text-slate-900">
+          Total Comment votes: <span class="text-green-400"><%= @user.calculate_votes_comments %></span>
+        </p>
       </div>
     <% else %>
       <div class="flex">
@@ -24,6 +30,12 @@
         </p>
         <p class="text-sm ml-1 dark:text-white text-slate-900">
           Score: <span class="text-green-400"><%= @user.score %></span>
+        </p>
+        <p class="text-sm ml-1 dark:text-white text-slate-900">
+          Total Post votes: <span class="text-green-400"><%= @user.calculate_votes_post %></span>
+        </p>
+        <p class="text-sm ml-1 dark:text-white text-slate-900">
+          Total Comment votes: <span class="text-green-400"><%= @user.calculate_votes_comments %></span>
         </p>
       </div>
     <% end %>

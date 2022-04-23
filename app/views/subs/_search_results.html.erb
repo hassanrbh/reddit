@@ -10,8 +10,19 @@
                         </li>
                     <% else %>
                         <li class="pl-8 pr-2 py-1 border-b-2 ml-1 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900 hover:animate-pulse">
-                            <i class="fas fa-blog"></i>
-                            <a href="<%= sub_path(sub_model.id) %>"><b class="text-rose-400"><%= highlight(sub_model.title.slice(0..4),params[:search]) %></b><%= highlight(sub_model.title.slice(4..sub_model.title.length),params[:search]) %></a>
+                            <div class="flex justify-between">
+                                <i class="fas fa-blog"></i>
+                                <a class="mr-[145px]" href="<%= sub_path(sub_model.id) %>"><b class="text-rose-400 "><%= highlight(sub_model.title.slice(0..4),params[:search]) %></b><%= highlight(sub_model.title.slice(4..sub_model.title.length),params[:search]) %></a>
+                                <form action="<%= subscribe_sub_path(sub_model.id) %>" method="post">
+                                    <input type="hidden"
+                                        name="authenticity_token"
+                                            value="<%= form_authenticity_token %>">
+                                    <input type="submit"
+                                                value="Subscribe"
+                                                    class="inline-block text-white font-bold border-[3px] border-orange-500
+                                                    rounded-lg text-lg pr-[20px] pl-[20px] hover:animate-pulsate bg-orange-500 cursor-pointer"/>
+                                </form>
+                            </div>
                         </li>
                     <% end %>
                 <% end %>
@@ -43,8 +54,19 @@
                         </li>
                     <% else %>
                         <li class="pl-8 pr-2 py-1 border-b-2 ml-1 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900 hover:animate-pulse">
-                            <i class="fas fa-blog"></i>
-                            <a href="<%= sub_path(sub_model.id) %>"><b class="text-rose-400"><%= highlight(sub_model.title.slice(0..4),params[:search]) %></b><%= highlight(sub_model.title.slice(4..sub_model.title.length),params[:search]) %></a>
+                            <div class="flex justify-between">
+                                <i class="fas fa-blog"></i>
+                                <a class="mr-[145px]" href="<%= sub_path(sub_model.id) %>"><b class="text-rose-400 "><%= highlight(sub_model.title.slice(0..4),params[:search]) %></b><%= highlight(sub_model.title.slice(4..sub_model.title.length),params[:search]) %></a>
+                                <form action="<%= subscribe_sub_path(sub_model.id) %>" method="post">
+                                    <input type="hidden"
+                                        name="authenticity_token"
+                                            value="<%= form_authenticity_token %>">
+                                    <input type="submit"
+                                                value="Subscribe"
+                                                    class="inline-block text-white font-bold border-[3px] border-orange-500
+                                                    rounded-lg text-lg pr-[20px] pl-[20px] hover:animate-pulsate bg-orange-500 cursor-pointer"/>
+                                </form>
+                            </div>
                         </li>
                     <% end %>
                 <% end %>

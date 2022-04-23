@@ -46,7 +46,7 @@ class SubsController < ApplicationController
             format.turbo_stream do 
                 render turbo_stream: turbo_stream.update("search_results",
                         partial: "subs/search_results",
-                        locals: {subs: @subs}
+                        locals: {subs: @subs, posts: @posts}
                 )
             end
         end
