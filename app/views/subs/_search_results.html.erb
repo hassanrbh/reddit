@@ -1,7 +1,7 @@
 <div class="">
     <div class="inline-flex flex-col justify-center relative text-gray-500 rounded ">
         <% if !@subs.empty? && !@posts.empty? %>
-            <ul class="bg-white border border-gray-100 w-full mt-2 scale-75 rounded-lg ml-1">
+            <ul class="bg-white border border-gray-100 w-full mt-2 rounded-lg">
                 <% @subs.each do |sub_model| %>
                     <% if sub_model.subscriptors.include?(current_user.id) %>
                         <li class="pl-8 pr-2 py-1 border-b-2 ml-1 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900 hover:animate-pulse">
@@ -16,7 +16,7 @@
                     <% end %>
                 <% end %>
             </ul>
-            <ul class="bg-white border border-gray-100 w-full mt-2 scale-75 rounded-lg ml-1">
+            <ul class="bg-white border border-gray-100 w-full mt-2 rounded-lg">
                 <% @posts.each do |post| %>
                     <li class="pl-8 pr-2 py-1 border-b-2 ml-1 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900 hover:animate-pulse animate-none">
                         <i class="fas fa-subscript"></i>
@@ -25,7 +25,7 @@
                 <% end %>
             </ul>
         <% elsif @subs.empty? %>
-            <ul class="bg-white border border-gray-100 w-full mt-2 scale-75 rounded-lg ml-1">
+            <ul class="bg-white border border-gray-100 w-full mt-2 rounded-lg">
                 <% @posts.each do |post| %>
                     <li class="pl-8 pr-2 py-1 border-b-2 ml-1 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900 hover:animate-pulse animate-none">
                         <i class="fas fa-subscript"></i>
@@ -34,7 +34,7 @@
                 <% end %>
             </ul>
         <% elsif @posts.empty? %>
-            <ul class="bg-white border border-gray-100 w-full mt-2 scale-75 rounded-lg ml-1">
+            <ul class="bg-white border border-gray-100 w-full mt-2 rounded-lg">
                 <% @subs.each do |sub_model| %>
                     <% if sub_model.subscriptors.include?(current_user.id) %>
                         <li class="pl-8 pr-2 py-1 border-b-2 ml-1 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900 hover:animate-pulse">
