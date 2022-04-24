@@ -23,7 +23,7 @@ This is complete version of reddit, Build with ruby on rails and esbuild and tur
     -> for installing redis in your gem files
       -> gem install redis
     -> if you want to play with it and to learn more just go to your irb , and require redis and start by typing 
-        -> 
+        -
 * How to run the test suite
 
 * Services (job queues, cache servers, search engines, etc.)
