@@ -2,7 +2,7 @@
 <section class="container mx-auto">
   <div class="bg-white h-[450px] w-auto mt-7 pl-[49px] pt-[25px] rounded-lg"> <!-- The White background -->
     <div class="font-medium pb-2"> <!-- data component -->
-      <p class="text-gray-500 hover:text-gray-900 hover:transition-all duration-1000">Posted by: <a href="<%= user_path(@post.author_id)%>"><em class="text-blue-400"><%= current_user.username %></em></a>
+      <p class="text-gray-500 hover:text-gray-900 hover:transition-all duration-1000">Posted by: <a href="<%= user_path(@post.author.slug)%>"><em class="text-blue-400"><%= current_user.username %></em></a>
           in: <a href="<%= sub_path(sub_post.id) %>" class="text-blue-400"><%= sub_post.title %></a>
           over <%= @post.calculate_post_current_time %>
       </p>
@@ -87,7 +87,7 @@
                 </form>
                 <span class="ml-1 text-black font-bold"><%= comment.votes.where(:value => 1).count %></span> <!-- Don't forget to add likes -->
             </div>
-            <a href="<%= comment_path(comment.id) %>" class="font-bold bg-blue-400 p-2 rounded-lg
+            <a href="<%= comment_path(comment) %>" class="font-bold bg-blue-400 p-2 rounded-lg
                         hover:opacity-100 hover:bg-black hover:text-white hover:ease-in-out
                         hover:transition-all transition-colors duration-1000 hover:duration-1000
                         hover:animate-none animate-pulse">

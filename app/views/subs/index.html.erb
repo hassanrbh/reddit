@@ -1,10 +1,16 @@
 <section class="text-black font-medium text-lg m-3 ml-[170px] dark:text-white">
-    <h4 class="text-sm text-gray-700 ml-[50px] pb-4 font-bold">Trending Today 📈</h4>
+    <div class="flex justify-between">
+        <h4 class="text-sm text-gray-700 ml-[50px] pb-4 font-bold">Trending Today 📈</h4>
+        <a href="<%= new_sub_path %>"
+                class="inline-block text-black font-bold bg-gradient-to-r from-rose-500 to-blue-500
+                    rounded-lg text-lg pr-[20px] pl-[20px] m-[13px] pt-[6px] pb-[6px] hover:animate-pulsate">
+                        <button type="button" class="font-bold">C Sub 😎</button></a>
+    </div>
     <div class=""> <!-- All The Subs Container-->
         <%= paginate @subs %>
         <div class="container m-auto h-[50px] grid grid-cols-4"> <!-- Container of the subs cards -->
             <% @subs.order(created_at: :desc).includes(:moderator).each do |sub| %>
-                <a href="<%= sub_path(sub.id) %>">
+                <a href="<%= sub_path(sub) %>">
                     <div class="w-[238px] h-[200px] ml-10">  <!-- Image of the sub-->
                         <img class="h-[150px] rounded-lg w-[230px] z-[1] absolute" src="<%= sub.moderator.gravatar_url%>"/>
                         <div class="relative z-10 w-40">
