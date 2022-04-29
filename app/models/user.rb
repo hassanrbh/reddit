@@ -95,6 +95,7 @@ class User < ApplicationRecord
   def should_generate_new_friendly_id?
     username_changed? || slug.blank?
   end
+
   private
   def adding_username
     self.username = "#{self.first_name}".concat(self.last_name)
