@@ -27,6 +27,7 @@
 #  last_name              :string           not null
 #  slug                   :string
 #  score                  :integer          default(0)
+#  admin                  :boolean          default(FALSE)
 #
 FactoryBot.define do
   factory :user do

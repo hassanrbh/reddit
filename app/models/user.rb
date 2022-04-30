@@ -27,6 +27,7 @@
 #  last_name              :string           not null
 #  slug                   :string
 #  score                  :integer          default(0)
+#  admin                  :boolean          default(FALSE)
 #
 class User < ApplicationRecord
   include Gravtastic
@@ -73,6 +74,10 @@ class User < ApplicationRecord
 
   def online?
     updated_at > 1.minutes.ago
+  end
+
+  def is_admin?
+    self.admin ? true : false
   end
 
   def calculate_votes_post

@@ -2,11 +2,22 @@ class SubsController < ApplicationController
     before_action :authenticate_user!
     before_action :clarify_user!, only: [:edit, :update]
 
-    def index 
+    def index
+        @all_subs = Sub.all
         if !params[:q].present?
             @subs = Sub.page(params[:page]).per(4)
-        else
-            @sub = Sub.where("title LIKE '%#{sanitize_sql(params[:q])}%'").page(params[:page])
+            respond_to do |format|
+                format.html {
+                    render :index
+                }
+                format.json {
+                    if current_user.is_admin?
+                        render json: @all_subs
+                    else
+                        render plain: "You are being hacky dude! 👺🚷" ,:status => :forbidden
+                    end
+                }
+            end
         end
     end
 
