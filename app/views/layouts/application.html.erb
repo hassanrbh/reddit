@@ -49,8 +49,8 @@
           </svg></a>
         </div>
         <div class="">
-          <form action="<%= search_subs_path %>" method="post">
-            <input type="search" placeholder="Search Reddit ..." name="search", oninput="this.form.requestSubmit()"
+          <form action="<%= search_subs_path %>" method="post" data-controller="search" data-search-target="form">
+            <input type="search" placeholder="Search Reddit ..." name="search", data-action="input->search#make_debounce"
                 class="mt-2 ml-20 w-[596px] h-[50px] bg-gray-100 rounded-lg hover:border-2
                       font-bold shadow shadow-cyan-50 hover:transtion-all ease-in-out indent-2.5"
                   />
