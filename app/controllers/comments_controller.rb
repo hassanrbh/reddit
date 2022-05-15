@@ -6,9 +6,16 @@ class CommentsController < ApplicationController
     end
   end
   def create
+    @all_comments = Comment.all
     @comment = current_user.comments.new(comments_params)
     if @comment.save
-      redirect_to comment_path(@comment)
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.prepend("comments",
+                  partial: "comments/comment",
+                  locals: {:comment => @comment, :all_comments => @all_comments})
+        end
+      end
     else
       render :new
     end
